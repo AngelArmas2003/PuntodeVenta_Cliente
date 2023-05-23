@@ -91,8 +91,6 @@ namespace ParkAutoHome.Pages
             string usuario = txtusuario.Text;
             string contra = Encripta(txtpass.Text);
             var resp =client.ValidaUsuarios(usuario, contra);
-
-
             if (resp == 1)
             {
                 Response.Redirect("Configuracion.aspx");
