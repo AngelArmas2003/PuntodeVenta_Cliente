@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Users" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserNewResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdaterNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Users" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdaterNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdaterNewResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogoUsuario">
+        <s:complexType />
+      </s:element>
+      <s:element name="CatalogoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogoUsuarioResult" type="tns:ArrayOfUsers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUsers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Users" nillable="true" type="tns:Users" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Users">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contraseña" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidaUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="con" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidaUsuariosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaUsuarios2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usu" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaUsuarios2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidaUsuarios2Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogEstamtos">
+        <s:complexType />
+      </s:element>
+      <s:element name="CatalogEstamtosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogEstamtosResult" type="tns:ArrayOfEstamtos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEstamtos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Estamtos" nillable="true" type="tns:Estamtos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Estamtos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CveEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CveEstamto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEstamto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Entidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Delegacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Numero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Condicion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CveEstamtoAdmin" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EstamtosActivos">
+        <s:complexType />
+      </s:element>
+      <s:element name="EstamtosActivosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EstamtosActivosResult" type="tns:ArrayOfEstamtos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogEmpresa">
+        <s:complexType />
+      </s:element>
+      <s:element name="CatalogEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogEmpresaResult" type="tns:ArrayOfEmpresas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmpresas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Empresas" nillable="true" type="tns:Empresas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Empresas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rfc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="NewEstamto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewEstamtoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NewEstamtoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEstamto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Estamto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEstamtoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateEstamtoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdaterEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdaterEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdaterEmpresaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NewEmpresaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeterminantesActivas">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeterminantesActivasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeterminantesActivasResult" type="tns:ArrayOfDeterminantes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDeterminantes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Determinantes" nillable="true" type="tns:Determinantes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Determinantes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Codigo_Proveedor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CveEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_Empresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CveEstamto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estacionamiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Determinante" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="NewProveedor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewProveedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NewProveedorResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProveedor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProveedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateProveedorResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TafiasDeterminantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dete" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TafiasDeterminantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TafiasDeterminantesResult" type="tns:ArrayOfTarifas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTarifas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tarifas" nillable="true" type="tns:Tarifas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tarifas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CveTarifa" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Minutos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImporteMinutos" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinutoInicial" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinutoFinal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalAcumulado" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Determinante" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CatalogoCombos">
+        <s:complexType />
+      </s:element>
+      <s:element name="CatalogoCombosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogoCombosResult" type="tns:ArrayOfCombos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCombos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Combos" nillable="true" type="tns:Combos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Combos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Combo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionCombo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CatalogoCombosdeterminantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="combo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogoCombosdeterminantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogoCombosdeterminantesResult" type="tns:ArrayOfComboDeterminantes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfComboDeterminantes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ComboDeterminantes" nillable="true" type="tns:ComboDeterminantes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ComboDeterminantes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroCombo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Determinante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombrePlaza" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="NewCombo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewComboResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NewComboResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Updatecombo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatecomboResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatecomboResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rfc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidaEmpresaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserNewSoapIn">
+    <wsdl:part name="parameters" element="tns:UserNew" />
+  </wsdl:message>
+  <wsdl:message name="UserNewSoapOut">
+    <wsdl:part name="parameters" element="tns:UserNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdaterNewSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdaterNew" />
+  </wsdl:message>
+  <wsdl:message name="UpdaterNewSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdaterNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidaUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidaUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuarios2SoapIn">
+    <wsdl:part name="parameters" element="tns:ValidaUsuarios2" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuarios2SoapOut">
+    <wsdl:part name="parameters" element="tns:ValidaUsuarios2Response" />
+  </wsdl:message>
+  <wsdl:message name="CatalogEstamtosSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogEstamtos" />
+  </wsdl:message>
+  <wsdl:message name="CatalogEstamtosSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogEstamtosResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstamtosActivosSoapIn">
+    <wsdl:part name="parameters" element="tns:EstamtosActivos" />
+  </wsdl:message>
+  <wsdl:message name="EstamtosActivosSoapOut">
+    <wsdl:part name="parameters" element="tns:EstamtosActivosResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="CatalogEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewEstamtoSoapIn">
+    <wsdl:part name="parameters" element="tns:NewEstamto" />
+  </wsdl:message>
+  <wsdl:message name="NewEstamtoSoapOut">
+    <wsdl:part name="parameters" element="tns:NewEstamtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstamtoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEstamto" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstamtoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEstamtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdaterEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdaterEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="UpdaterEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdaterEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:NewEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="NewEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:NewEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeterminantesActivasSoapIn">
+    <wsdl:part name="parameters" element="tns:DeterminantesActivas" />
+  </wsdl:message>
+  <wsdl:message name="DeterminantesActivasSoapOut">
+    <wsdl:part name="parameters" element="tns:DeterminantesActivasResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewProveedorSoapIn">
+    <wsdl:part name="parameters" element="tns:NewProveedor" />
+  </wsdl:message>
+  <wsdl:message name="NewProveedorSoapOut">
+    <wsdl:part name="parameters" element="tns:NewProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProveedorSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProveedor" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProveedorSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="TafiasDeterminantesSoapIn">
+    <wsdl:part name="parameters" element="tns:TafiasDeterminantes" />
+  </wsdl:message>
+  <wsdl:message name="TafiasDeterminantesSoapOut">
+    <wsdl:part name="parameters" element="tns:TafiasDeterminantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoCombosSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogoCombos" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoCombosSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogoCombosResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoCombosdeterminantesSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogoCombosdeterminantes" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoCombosdeterminantesSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogoCombosdeterminantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewComboSoapIn">
+    <wsdl:part name="parameters" element="tns:NewCombo" />
+  </wsdl:message>
+  <wsdl:message name="NewComboSoapOut">
+    <wsdl:part name="parameters" element="tns:NewComboResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatecomboSoapIn">
+    <wsdl:part name="parameters" element="tns:Updatecombo" />
+  </wsdl:message>
+  <wsdl:message name="UpdatecomboSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatecomboResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidaEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidaEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="ValidaEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidaEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSPanelControlSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserNew">
+      <wsdl:input message="tns:UserNewSoapIn" />
+      <wsdl:output message="tns:UserNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdaterNew">
+      <wsdl:input message="tns:UpdaterNewSoapIn" />
+      <wsdl:output message="tns:UpdaterNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoUsuario">
+      <wsdl:input message="tns:CatalogoUsuarioSoapIn" />
+      <wsdl:output message="tns:CatalogoUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarios">
+      <wsdl:input message="tns:ValidaUsuariosSoapIn" />
+      <wsdl:output message="tns:ValidaUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarios2">
+      <wsdl:input message="tns:ValidaUsuarios2SoapIn" />
+      <wsdl:output message="tns:ValidaUsuarios2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEstamtos">
+      <wsdl:input message="tns:CatalogEstamtosSoapIn" />
+      <wsdl:output message="tns:CatalogEstamtosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstamtosActivos">
+      <wsdl:input message="tns:EstamtosActivosSoapIn" />
+      <wsdl:output message="tns:EstamtosActivosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEmpresa">
+      <wsdl:input message="tns:CatalogEmpresaSoapIn" />
+      <wsdl:output message="tns:CatalogEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewEstamto">
+      <wsdl:input message="tns:NewEstamtoSoapIn" />
+      <wsdl:output message="tns:NewEstamtoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstamto">
+      <wsdl:input message="tns:UpdateEstamtoSoapIn" />
+      <wsdl:output message="tns:UpdateEstamtoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdaterEmpresa">
+      <wsdl:input message="tns:UpdaterEmpresaSoapIn" />
+      <wsdl:output message="tns:UpdaterEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewEmpresa">
+      <wsdl:input message="tns:NewEmpresaSoapIn" />
+      <wsdl:output message="tns:NewEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeterminantesActivas">
+      <wsdl:input message="tns:DeterminantesActivasSoapIn" />
+      <wsdl:output message="tns:DeterminantesActivasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewProveedor">
+      <wsdl:input message="tns:NewProveedorSoapIn" />
+      <wsdl:output message="tns:NewProveedorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProveedor">
+      <wsdl:input message="tns:UpdateProveedorSoapIn" />
+      <wsdl:output message="tns:UpdateProveedorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TafiasDeterminantes">
+      <wsdl:input message="tns:TafiasDeterminantesSoapIn" />
+      <wsdl:output message="tns:TafiasDeterminantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoCombos">
+      <wsdl:input message="tns:CatalogoCombosSoapIn" />
+      <wsdl:output message="tns:CatalogoCombosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoCombosdeterminantes">
+      <wsdl:input message="tns:CatalogoCombosdeterminantesSoapIn" />
+      <wsdl:output message="tns:CatalogoCombosdeterminantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewCombo">
+      <wsdl:input message="tns:NewComboSoapIn" />
+      <wsdl:output message="tns:NewComboSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Updatecombo">
+      <wsdl:input message="tns:UpdatecomboSoapIn" />
+      <wsdl:output message="tns:UpdatecomboSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaEmpresa">
+      <wsdl:input message="tns:ValidaEmpresaSoapIn" />
+      <wsdl:output message="tns:ValidaEmpresaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSPanelControlSoap" type="tns:WSPanelControlSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserNew">
+      <soap:operation soapAction="http://tempuri.org/UserNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdaterNew">
+      <soap:operation soapAction="http://tempuri.org/UpdaterNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoUsuario">
+      <soap:operation soapAction="http://tempuri.org/CatalogoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ValidaUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarios2">
+      <soap:operation soapAction="http://tempuri.org/ValidaUsuarios2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEstamtos">
+      <soap:operation soapAction="http://tempuri.org/CatalogEstamtos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstamtosActivos">
+      <soap:operation soapAction="http://tempuri.org/EstamtosActivos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEmpresa">
+      <soap:operation soapAction="http://tempuri.org/CatalogEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewEstamto">
+      <soap:operation soapAction="http://tempuri.org/NewEstamto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstamto">
+      <soap:operation soapAction="http://tempuri.org/UpdateEstamto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdaterEmpresa">
+      <soap:operation soapAction="http://tempuri.org/UpdaterEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewEmpresa">
+      <soap:operation soapAction="http://tempuri.org/NewEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeterminantesActivas">
+      <soap:operation soapAction="http://tempuri.org/DeterminantesActivas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewProveedor">
+      <soap:operation soapAction="http://tempuri.org/NewProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProveedor">
+      <soap:operation soapAction="http://tempuri.org/UpdateProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TafiasDeterminantes">
+      <soap:operation soapAction="http://tempuri.org/TafiasDeterminantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoCombos">
+      <soap:operation soapAction="http://tempuri.org/CatalogoCombos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoCombosdeterminantes">
+      <soap:operation soapAction="http://tempuri.org/CatalogoCombosdeterminantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewCombo">
+      <soap:operation soapAction="http://tempuri.org/NewCombo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Updatecombo">
+      <soap:operation soapAction="http://tempuri.org/Updatecombo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaEmpresa">
+      <soap:operation soapAction="http://tempuri.org/ValidaEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSPanelControlSoap12" type="tns:WSPanelControlSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserNew">
+      <soap12:operation soapAction="http://tempuri.org/UserNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdaterNew">
+      <soap12:operation soapAction="http://tempuri.org/UpdaterNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoUsuario">
+      <soap12:operation soapAction="http://tempuri.org/CatalogoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/ValidaUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarios2">
+      <soap12:operation soapAction="http://tempuri.org/ValidaUsuarios2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEstamtos">
+      <soap12:operation soapAction="http://tempuri.org/CatalogEstamtos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstamtosActivos">
+      <soap12:operation soapAction="http://tempuri.org/EstamtosActivos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/CatalogEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewEstamto">
+      <soap12:operation soapAction="http://tempuri.org/NewEstamto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstamto">
+      <soap12:operation soapAction="http://tempuri.org/UpdateEstamto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdaterEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/UpdaterEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/NewEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeterminantesActivas">
+      <soap12:operation soapAction="http://tempuri.org/DeterminantesActivas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewProveedor">
+      <soap12:operation soapAction="http://tempuri.org/NewProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProveedor">
+      <soap12:operation soapAction="http://tempuri.org/UpdateProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TafiasDeterminantes">
+      <soap12:operation soapAction="http://tempuri.org/TafiasDeterminantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoCombos">
+      <soap12:operation soapAction="http://tempuri.org/CatalogoCombos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoCombosdeterminantes">
+      <soap12:operation soapAction="http://tempuri.org/CatalogoCombosdeterminantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewCombo">
+      <soap12:operation soapAction="http://tempuri.org/NewCombo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Updatecombo">
+      <soap12:operation soapAction="http://tempuri.org/Updatecombo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/ValidaEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSPanelControl">
+    <wsdl:port name="WSPanelControlSoap" binding="tns:WSPanelControlSoap">
+      <soap:address location="https://parkauto.com.mx:8484/WSPanelControl.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSPanelControlSoap12" binding="tns:WSPanelControlSoap12">
+      <soap12:address location="https://parkauto.com.mx:8484/WSPanelControl.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

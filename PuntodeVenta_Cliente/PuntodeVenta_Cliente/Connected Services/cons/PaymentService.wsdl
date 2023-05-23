@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="consultaBoletoRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsulaJson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultaBoletoRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultaBoletoRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="revBoletoPagadoRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsulaJson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="revBoletoPagadoRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="revBoletoPagadoRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="notiBoletoPagadoRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsulaJson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="notiBoletoPagadoRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="notiBoletoPagadoRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="consultaBoletoRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:consultaBoletoRequest" />
+  </wsdl:message>
+  <wsdl:message name="consultaBoletoRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:consultaBoletoRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="revBoletoPagadoRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:revBoletoPagadoRequest" />
+  </wsdl:message>
+  <wsdl:message name="revBoletoPagadoRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:revBoletoPagadoRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="notiBoletoPagadoRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:notiBoletoPagadoRequest" />
+  </wsdl:message>
+  <wsdl:message name="notiBoletoPagadoRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:notiBoletoPagadoRequestResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PaymentServiceSoap">
+    <wsdl:operation name="consultaBoletoRequest">
+      <wsdl:input message="tns:consultaBoletoRequestSoapIn" />
+      <wsdl:output message="tns:consultaBoletoRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="revBoletoPagadoRequest">
+      <wsdl:input message="tns:revBoletoPagadoRequestSoapIn" />
+      <wsdl:output message="tns:revBoletoPagadoRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="notiBoletoPagadoRequest">
+      <wsdl:input message="tns:notiBoletoPagadoRequestSoapIn" />
+      <wsdl:output message="tns:notiBoletoPagadoRequestSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaymentServiceSoap" type="tns:PaymentServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultaBoletoRequest">
+      <soap:operation soapAction="http://tempuri.org/consultaBoletoRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="revBoletoPagadoRequest">
+      <soap:operation soapAction="http://tempuri.org/revBoletoPagadoRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notiBoletoPagadoRequest">
+      <soap:operation soapAction="http://tempuri.org/notiBoletoPagadoRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PaymentServiceSoap12" type="tns:PaymentServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultaBoletoRequest">
+      <soap12:operation soapAction="http://tempuri.org/consultaBoletoRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="revBoletoPagadoRequest">
+      <soap12:operation soapAction="http://tempuri.org/revBoletoPagadoRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notiBoletoPagadoRequest">
+      <soap12:operation soapAction="http://tempuri.org/notiBoletoPagadoRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentService">
+    <wsdl:port name="PaymentServiceSoap" binding="tns:PaymentServiceSoap">
+      <soap:address location="https://www.parkauto.com.mx:8443/PaymentService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceSoap12" binding="tns:PaymentServiceSoap12">
+      <soap12:address location="https://www.parkauto.com.mx:8443/PaymentService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
