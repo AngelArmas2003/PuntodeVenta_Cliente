@@ -100,13 +100,6 @@ namespace ParkAutoHome.Pages
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Usuario Incorrecto');", true);
             }
-
-            
-
-
-
-
-            
         }
     }
 }
