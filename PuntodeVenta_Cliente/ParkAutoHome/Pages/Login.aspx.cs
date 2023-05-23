@@ -90,9 +90,6 @@ namespace ParkAutoHome.Pages
 
             string usuario = txtusuario.Text;
             string contra = Encripta(txtpass.Text);
-
-
-
             var resp =client.ValidaUsuarios(usuario, contra);
 
 
