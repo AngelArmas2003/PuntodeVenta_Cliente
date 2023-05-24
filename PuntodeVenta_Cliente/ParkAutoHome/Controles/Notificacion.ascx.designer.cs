@@ -7,74 +7,65 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ParkAutoHome.Pages
+namespace ParkAutoHome.Controles
 {
 
 
-    public partial class Login
+    public partial class Notificacion
     {
 
         /// <summary>
-        /// Control LblTitulo.
+        /// Control DivSuccess.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblTitulo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivSuccess;
 
         /// <summary>
-        /// Control Label1.
+        /// Control LblMsjsuccess.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label LblMsjsuccess;
 
         /// <summary>
-        /// Control txtusuario.
+        /// Control DivWarning.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtusuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivWarning;
 
         /// <summary>
-        /// Control Label2.
+        /// Control LblMsjwarning.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label LblMsjwarning;
 
         /// <summary>
-        /// Control txtpass.
+        /// Control DivDanger.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpass;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivDanger;
 
         /// <summary>
-        /// Control Button1.
+        /// Control LblMsjdanger.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// Control Notificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::ParkAutoHome.Controles.Notificacion Notificacion;
+        protected global::System.Web.UI.WebControls.Label LblMsjdanger;
     }
 }

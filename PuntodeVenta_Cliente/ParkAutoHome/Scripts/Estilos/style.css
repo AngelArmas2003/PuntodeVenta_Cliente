@@ -1,0 +1,6 @@
+﻿@IMPORT url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+.CajaTexto {
+    font-size: calc(0.67em + 0.67vw);
+    margin: 0.45em;
+    padding: 0.40em;
+}

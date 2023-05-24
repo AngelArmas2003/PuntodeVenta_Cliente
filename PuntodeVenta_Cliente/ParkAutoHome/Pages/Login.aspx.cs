@@ -81,24 +81,40 @@ namespace ParkAutoHome.Pages
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-
-            // quitar para implementacion 
-            ServicePointManager.ServerCertificateValidationCallback = delegate
+            if (txtusuario.Text == string.Empty && txtpass.Text == string.Empty)
+            {
+                Notificacion.VerMensaje("Ingrese Usuario y Contraseña.", 2);
+                return;
+            }
+            if (txtusuario.Text == string.Empty)
+            {
+                Notificacion.VerMensaje("Ingrese Usuario.", 2);
+                return;
+            }
+            if (txtpass.Text == string.Empty)
+            {
+                Notificacion.VerMensaje("Ingrese Contraseña.", 2);
+                return;
+            }            
+            try
+            {
+                // quitar para implementacion 
+                ServicePointManager.ServerCertificateValidationCallback = delegate
                (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
 
-            WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-
-            string usuario = txtusuario.Text;
-            string contra = Encripta(txtpass.Text);
-            var resp =client.ValidaUsuarios(usuario, contra);
-            if (resp == 1)
-            {
-                Response.Redirect("Configuracion.aspx");
-
+                WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                //Notificacion.VerMensaje("El servicio no esta disponible, favor de intentarlo más tarde.", 3);
+                string usuario = txtusuario.Text;
+                string contra = Encripta(txtpass.Text);
+                var resp = client.ValidaUsuarios(usuario, contra);
+                if (resp == 1)
+                    Response.Redirect("Configuracion.aspx");
+                else
+                    Notificacion.VerMensaje("Usuario y/o incorrecto.", 2);
             }
-            else
+            catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Usuario Incorrecto');", true);
+                Notificacion.VerMensaje(ex.Message.ToString(), 3);
             }
         }
     }
