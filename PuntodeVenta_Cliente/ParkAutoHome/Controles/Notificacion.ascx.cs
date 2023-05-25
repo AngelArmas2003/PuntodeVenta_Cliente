@@ -6,9 +6,7 @@ namespace ParkAutoHome.Controles
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DivSuccess.Visible = false;
-            DivWarning.Visible = false;
-            DivDanger.Visible = false;
+            OcultaDiv();
         }
         public void VerMensaje(string ms, int tipoMsj)
         {
@@ -33,6 +31,13 @@ namespace ParkAutoHome.Controles
                     DivDanger.Visible = true;
                     break;
             }
+        }
+
+        public void OcultaDiv()
+        {
+            DivSuccess.Visible = false;
+            DivWarning.Visible = false;
+            DivDanger.Visible = false;
         }
     }
 }

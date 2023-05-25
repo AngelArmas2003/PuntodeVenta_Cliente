@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://parkauto.com.mx:8484/WSPanelControl.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8484/WSPanelControl.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSPanelControl1.disco" MetadataType="Disco" ID="144cfdaa-bf4a-460d-8d3c-caff0861aa4a" SourceId="1" SourceUrl="https://parkauto.com.mx:8484/WSPanelControl.asmx?disco" />
-    <MetadataFile FileName="WSPanelControl1.wsdl" MetadataType="Wsdl" ID="a4b022f4-1777-4812-b503-663278bd4c2f" SourceId="1" SourceUrl="https://parkauto.com.mx:8484/WSPanelControl.asmx?wsdl" />
+    <MetadataFile FileName="WSPanelControl.wsdl" MetadataType="Wsdl" ID="5290fd2e-c927-48fc-9cfa-b19abbc917ac" SourceId="1" SourceUrl="http://localhost:8484/WSPanelControl.asmx?wsdl" />
+    <MetadataFile FileName="WSPanelControl.disco" MetadataType="Disco" ID="34a66cf7-3b14-41ab-80b7-b29c677023ad" SourceId="1" SourceUrl="http://localhost:8484/WSPanelControl.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -201,7 +201,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\WsPA\WSPanelControl1.disco" />
+    <None Include="Connected Services\WsPA\WSPanelControl.disco" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -221,7 +221,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Connected Services\WsPA\WSPanelControl1.wsdl" />
+    <None Include="Connected Services\WsPA\WSPanelControl.wsdl" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Pages\Configuracion.aspx" />
     <Content Include="Pages\Determinantes.aspx" />
@@ -234,6 +234,7 @@
     <Content Include="Pages\Combo.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Estilos\Grid.css" />
     <Content Include="Scripts\Estilos\style.css" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

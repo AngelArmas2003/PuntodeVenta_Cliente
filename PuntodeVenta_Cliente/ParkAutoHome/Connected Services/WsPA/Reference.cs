@@ -984,7 +984,7 @@ namespace ParkAutoHome.WsPA {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdaterNew", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.UpdaterNewResponse> UpdaterNewAsync(ParkAutoHome.WsPA.UpdaterNewRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento CatalogoUsuarioResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento entUser del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoUsuario", ReplyAction="*")]
         ParkAutoHome.WsPA.CatalogoUsuarioResponse CatalogoUsuario(ParkAutoHome.WsPA.CatalogoUsuarioRequest request);
         
@@ -1335,10 +1335,17 @@ namespace ParkAutoHome.WsPA {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class CatalogoUsuarioRequestBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.Users entUser;
+        
         public CatalogoUsuarioRequestBody() {
+        }
+        
+        public CatalogoUsuarioRequestBody(ParkAutoHome.WsPA.Users entUser) {
+            this.entUser = entUser;
         }
     }
     
@@ -2674,9 +2681,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogoUsuario(request);
         }
         
-        public ParkAutoHome.WsPA.Users[] CatalogoUsuario() {
+        public ParkAutoHome.WsPA.Users[] CatalogoUsuario(ParkAutoHome.WsPA.Users entUser) {
             ParkAutoHome.WsPA.CatalogoUsuarioRequest inValue = new ParkAutoHome.WsPA.CatalogoUsuarioRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogoUsuarioRequestBody();
+            inValue.Body.entUser = entUser;
             ParkAutoHome.WsPA.CatalogoUsuarioResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoUsuario(inValue);
             return retVal.Body.CatalogoUsuarioResult;
         }
@@ -2686,9 +2694,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogoUsuarioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoUsuarioResponse> CatalogoUsuarioAsync() {
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoUsuarioResponse> CatalogoUsuarioAsync(ParkAutoHome.WsPA.Users entUser) {
             ParkAutoHome.WsPA.CatalogoUsuarioRequest inValue = new ParkAutoHome.WsPA.CatalogoUsuarioRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogoUsuarioRequestBody();
+            inValue.Body.entUser = entUser;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoUsuarioAsync(inValue);
         }
         

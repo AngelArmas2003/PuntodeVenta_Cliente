@@ -99,8 +99,8 @@ namespace ParkAutoHome.Pages
             try
             {
                 // quitar para implementacion 
-                ServicePointManager.ServerCertificateValidationCallback = delegate
-               (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+                //ServicePointManager.ServerCertificateValidationCallback = delegate
+               //(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
 
                 WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
                 //Notificacion.VerMensaje("El servicio no esta disponible, favor de intentarlo más tarde.", 3);
