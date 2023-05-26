@@ -11,28 +11,11 @@ namespace ParkAutoHome.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-
             if (!IsPostBack)
             {
-
-
-                //fillgrilla();
                 //Inicio();
-
                 CargarEstamosActivas();
                 ddlCombo_TextChanged(sender, e);
-
-
-                try
-                {
-
-                }
-                catch (Exception ex)
-                {
-
-                }
             }
 
 
@@ -75,10 +58,10 @@ namespace ParkAutoHome.Pages
           
 
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-
-
-
-            this.ddlCombo.DataSource = client.CatalogoCombos();
+            WsPA.Combos ent = new WsPA.Combos();
+            ent.Combo = "";
+            ent.DescripcionCombo = "";
+            this.ddlCombo.DataSource = client.CatalogoCombos(ent);
             this.ddlCombo.DataTextField = "DescripcionCombo";
             this.ddlCombo.DataValueField = "Combo";
 

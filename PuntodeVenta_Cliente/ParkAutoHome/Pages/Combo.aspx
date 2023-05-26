@@ -1,101 +1,108 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site3.Master" AutoEventWireup="true" CodeBehind="Combo.aspx.cs" Inherits="ParkAutoHome.Pages.WebForm1" %>
+
+<%@ Register Src="~/Controles/Notificacion.ascx" TagPrefix="uc1" TagName="Notificacion" %>
+<%@ Register Src="~/Controles/WucSesion.ascx" TagPrefix="uc1" TagName="WucSesion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- 
-          <div class="jumbotron">
-        <h2>&nbsp;COMBOS</h2>
-        <p class="lead"><span style="color: rgb(9,3,255); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" >Alta de Combo</span></p>
-           <asp:GridView ID="GVCombo" runat="server" AllowPaging="True" 
-            AutoGenerateColumns="false" onpageindexchanging="GVEmpresas_PageIndexChanging" 
-            onselectedindexchanged="GVEmpresas_SelectedIndexChanged"  horizontalalign="Center"  BorderColor="Blue" ForeColor ="Black" >
-            <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Id" >
-                <%--<ControlStyle Font-Names="Arial" Font-Size="Medium" />--%>
-                <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor ="Blue" ForeColor ="White"  Width="100"  />   
-                    <ItemStyle Font-Names="Arial" Font-Size="Smaller" /> 
-                </asp:BoundField>
-                <asp:BoundField DataField="Combo" HeaderText="Número Combo">
-                     <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor ="Blue" ForeColor ="White"  Width="100"/>   
-                    <ItemStyle Font-Names="Arial" Font-Size="Smaller" /> 
-                    </asp:BoundField>
-
-                <asp:BoundField DataField="DescripcionCombo" HeaderText="Descripcion Combo" >
-                    <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor ="Blue" ForeColor ="White" Width="300"/>   
-                    <ItemStyle Font-Names="Arial" Font-Size="Smaller" /> 
-                    <ItemStyle Width="200px"/>
-                    <ControlStyle Width="300px"/>
-                    </asp:BoundField>
-
-                
-                <asp:BoundField DataField="Activo" HeaderText="Activo" >
-                    <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor ="Blue" ForeColor ="White" Width="100"/>   
-                    <ItemStyle Font-Names="Arial" Font-Size="Smaller" /> 
-                    </asp:BoundField>
-               
-
-                
-                <asp:CommandField ShowSelectButton="True"  HeaderStyle-BackColor ="Blue"   ControlStyle-ForeColor ="Green"    />
-            </Columns>
-        </asp:GridView>
-           
-            <br />
-            <br />
-
-          <div align="center">
-
-              <asp:Label ID="Label2" runat="server" Text="Número de Combo"></asp:Label>
-              &nbsp;&nbsp;&nbsp;
-              <asp:TextBox ID="txtNumCombo" runat="server" Width="101px" Style="text-transform: uppercase"></asp:TextBox>
-
-
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         
-      
-
-          <asp:Label ID="Label3" runat="server" Text="Descripción Combo"></asp:Label>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <asp:TextBox ID="txtDescripcion" runat="server" Width="148px" Style="text-transform: uppercase"></asp:TextBox>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <asp:CheckBox ID="ckEstatus" runat="server"  Text ="  Estatus" Font-Size="Large" TextAlign="right" Font-Bold="false"/>
-
-            <br />
-           <br />
-        
-         <br />
-         
-        
-           
-        
-           <asp:Button ID="btnNuevo" runat="server" Height="43px" Text="Nuevo" Width="112px" OnClick="Button2_Click" class="btn btn-primary btn-lg"  />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <asp:Button ID="btnGuardar" runat="server" Text="Guardar" Height="43px" OnClick="btnEditar_Click" Width="114px" class="btn btn-primary btn-lg" />
-
-
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-          <asp:Button ID="btnEditar" runat="server" Height="43px" Text="Editar" Width="116px" OnClick="Button1_Click" class="btn btn-primary btn-lg"/>
-         
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         
-          <asp:Button ID="Button1" runat="server" Height="43px" Text="Cancelar" Width="117px" OnClick="Button3_Click" class="btn btn-primary btn-lg"/>
-           <br />
-           <br />
-        
-        </div>
-
-            
-               
-
-     
-
-     <br />
-
-
-
-      </div>
-
-
-
+    <uc1:WucSesion runat="server" ID="WucSesion" />
+    <asp:UpdatePanel runat="server" ID="UpdatePanel2" UpdateMode="Conditional">
+        <ContentTemplate>
+            <div class="jumbotron">
+                <h2>&nbsp;COMBOS</h2>
+                <p class="lead"><span style="color: rgb(85, 85, 85); font-family: &quot; helvetica neue&quot; , helvetica, arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Alta de Combo</span></p>
+                <div class="row" style="margin: 3px; border: double;">
+                    <div class="col-md-4" style="display: flex; justify-content: right; padding: 10px;">
+                        <label>No. Combo:</label>
+                        <asp:TextBox ID="TxtBNoCombo" MaxLength="10" onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)" runat="server" CssClass="form-control" class="form-control CajaTexto" />
+                    </div>
+                    <div class="col-md-4" style="display: flex; justify-content: left; padding: 10px;">
+                        <label>Nombre Combo:</label>
+                        <asp:TextBox ID="TxtBCombo" runat="server" CssClass="form-control" class="form-control CajaTexto" />
+                    </div>
+                    <div class="col-md-2" style="display: flex; justify-content: right; padding: 10px;">
+                        <asp:Button ID="BtnBusqueda" runat="server" class="btn btn-primary btn-md" Text="Filtrar búsqueda" OnClick="BtnBusqueda_Click" />
+                    </div>
+                    <div class="col-md-2" style="display: flex; justify-content: left; padding: 10px;">
+                        <asp:Button ID="BtnLimpiar" runat="server" class="btn btn-primary btn-md" Text="Limpiar" OnClick="BtnLimpiar_Click" />
+                    </div>
+                </div>
+                <br />
+                <asp:GridView ID="GVCombo" runat="server" AllowPaging="True"
+                    AutoGenerateColumns="false"
+                    OnSelectedIndexChanged="GVEmpresas_SelectedIndexChanged" PageSize="15"
+                    CssClass="mydatagrid" PagerStyle-CssClass="pager"
+                    HeaderStyle-CssClass="header" RowStyle-CssClass="rows">
+                    <Columns>
+                        <asp:BoundField DataField="Id" HeaderText="Id">
+                            <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor="Blue" ForeColor="White" Width="100" />
+                            <ItemStyle Font-Names="Arial" Font-Size="Smaller" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Combo" HeaderText="Número Combo">
+                            <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor="Blue" ForeColor="White" Width="100" />
+                            <ItemStyle Font-Names="Arial" Font-Size="Smaller" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="DescripcionCombo" HeaderText="Descripcion Combo">
+                            <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor="Blue" ForeColor="White" Width="300" />
+                            <ItemStyle Font-Names="Arial" Font-Size="Smaller" />
+                            <ItemStyle Width="200px" />
+                            <ControlStyle Width="300px" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Activo" HeaderText="Activo">
+                            <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor="Blue" ForeColor="White" Width="100" />
+                            <ItemStyle Font-Names="Arial" Font-Size="Smaller" />
+                        </asp:BoundField>
+                        <asp:CommandField ShowSelectButton="True" HeaderStyle-BackColor="Blue" ControlStyle-ForeColor="Green" />
+                    </Columns>
+                </asp:GridView>
+                <br />
+                <br />
+                <div align="center">
+                    <div class="row">
+                        <div class="col-md-5" style="display: flex; justify-content: right; padding: 10px;">
+                            <asp:Label ID="Label2" runat="server" Text="Número de Combo"></asp:Label>
+                        </div>
+                        <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                            <asp:TextBox ID="txtNumCombo" runat="server" Width="101px"
+                                MaxLength="10" onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)"
+                                Style="text-transform: uppercase" class="form-control CajaTexto"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="display: flex; justify-content: right; padding: 10px;">
+                            <asp:Label ID="Label3" runat="server" Text="Descripción Combo"></asp:Label>
+                        </div>
+                        <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                            <asp:TextBox ID="txtDescripcion" runat="server" Width="348px" Style="text-transform: uppercase" class="form-control CajaTexto"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="display: flex; justify-content: right; padding: 10px;">
+                            <asp:Label ID="Label1" runat="server" Text="Estatus"></asp:Label>
+                        </div>
+                        <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                            <asp:CheckBox ID="ckEstatus" runat="server" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 10px; justify-content: center; display: flex;">
+                        <div class="col-md-2">
+                            <asp:Button ID="btnNuevo" runat="server" Height="43px" Text="Nuevo" Width="112px" OnClick="Button2_Click" class="btn btn-primary btn-lg" />
+                        </div>
+                        <div class="col-md-2">
+                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" Height="43px" OnClick="btnEditar_Click" Width="114px" class="btn btn-primary btn-lg" />
+                        </div>
+                        <div class="col-md-2">
+                            <asp:Button ID="btnEditar" runat="server" Height="43px" Text="Editar" Width="116px" OnClick="Button1_Click" class="btn btn-primary btn-lg" />
+                        </div>
+                        <div class="col-md-2">
+                            <asp:Button ID="Button1" runat="server" Height="43px" Text="Cancelar" Width="117px" OnClick="Button3_Click" class="btn btn-primary btn-lg" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align: center; padding: 20px">
+                            <uc1:Notificacion runat="server" ID="Notificacion" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

@@ -4,12 +4,15 @@
     MaintainScrollPositionOnPostback="true"--%>
 
 <%@ Register Src="~/Controles/Notificacion.ascx" TagPrefix="uc1" TagName="Notificacion" %>
+<%@ Register Src="~/Controles/WucSesion.ascx" TagPrefix="uc1" TagName="WucSesion" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <div class="jumbotron">
         <h2>Usuarios</h2>
         <p class="lead"><span style="color: rgb(85, 85, 85); font-family: &quot; helvetica neue&quot; , helvetica, arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Activacion de Usuarios</span></p>
-        
+        <uc1:WucSesion runat="server" id="WucSesion" />
         <asp:UpdatePanel runat="server" ID="UpdatePanel2"
             UpdateMode="Conditional">
             <ContentTemplate>
@@ -31,7 +34,7 @@
                         </div>
                     </div>
                 <br />
-                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" PageSize="3"
+                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" PageSize="15"
                     AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging"
                     OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
                     CssClass="mydatagrid" PagerStyle-CssClass="pager" 
@@ -116,7 +119,7 @@
                             <asp:Label ID="Label5" runat="server" Text="Estatus"></asp:Label>
                         </div>
                         <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:CheckBox ID="ckEstatus" runat="server" Width="320px" />
+                            <asp:CheckBox ID="ckEstatus" runat="server"/>
                         </div>
                     </div>
                     <div class="row" style="padding: 10px; justify-content: center; display: flex;">

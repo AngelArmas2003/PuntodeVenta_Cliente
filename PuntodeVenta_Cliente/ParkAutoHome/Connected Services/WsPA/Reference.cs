@@ -1005,7 +1005,7 @@ namespace ParkAutoHome.WsPA {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidaUsuarios2", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.ValidaUsuarios2Response> ValidaUsuarios2Async(ParkAutoHome.WsPA.ValidaUsuarios2Request request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento CatalogEstamtosResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento entEst del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogEstamtos", ReplyAction="*")]
         ParkAutoHome.WsPA.CatalogEstamtosResponse CatalogEstamtos(ParkAutoHome.WsPA.CatalogEstamtosRequest request);
         
@@ -1019,7 +1019,7 @@ namespace ParkAutoHome.WsPA {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EstamtosActivos", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.EstamtosActivosResponse> EstamtosActivosAsync(ParkAutoHome.WsPA.EstamtosActivosRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento CatalogEmpresaResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento entEmp del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogEmpresa", ReplyAction="*")]
         ParkAutoHome.WsPA.CatalogEmpresaResponse CatalogEmpresa(ParkAutoHome.WsPA.CatalogEmpresaRequest request);
         
@@ -1054,7 +1054,7 @@ namespace ParkAutoHome.WsPA {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewEmpresa", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.NewEmpresaResponse> NewEmpresaAsync(ParkAutoHome.WsPA.NewEmpresaRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento DeterminantesActivasResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento entDet del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeterminantesActivas", ReplyAction="*")]
         ParkAutoHome.WsPA.DeterminantesActivasResponse DeterminantesActivas(ParkAutoHome.WsPA.DeterminantesActivasRequest request);
         
@@ -1082,7 +1082,7 @@ namespace ParkAutoHome.WsPA {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TafiasDeterminantes", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.TafiasDeterminantesResponse> TafiasDeterminantesAsync(ParkAutoHome.WsPA.TafiasDeterminantesRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento CatalogoCombosResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento entC del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoCombos", ReplyAction="*")]
         ParkAutoHome.WsPA.CatalogoCombosResponse CatalogoCombos(ParkAutoHome.WsPA.CatalogoCombosRequest request);
         
@@ -1543,10 +1543,17 @@ namespace ParkAutoHome.WsPA {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class CatalogEstamtosRequestBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.Estamtos entEst;
+        
         public CatalogEstamtosRequestBody() {
+        }
+        
+        public CatalogEstamtosRequestBody(ParkAutoHome.WsPA.Estamtos entEst) {
+            this.entEst = entEst;
         }
     }
     
@@ -1665,10 +1672,17 @@ namespace ParkAutoHome.WsPA {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class CatalogEmpresaRequestBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.Empresas entEmp;
+        
         public CatalogEmpresaRequestBody() {
+        }
+        
+        public CatalogEmpresaRequestBody(ParkAutoHome.WsPA.Empresas entEmp) {
+            this.entEmp = entEmp;
         }
     }
     
@@ -1998,10 +2012,17 @@ namespace ParkAutoHome.WsPA {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class DeterminantesActivasRequestBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.Determinantes entDet;
+        
         public DeterminantesActivasRequestBody() {
+        }
+        
+        public DeterminantesActivasRequestBody(ParkAutoHome.WsPA.Determinantes entDet) {
+            this.entDet = entDet;
         }
     }
     
@@ -2263,10 +2284,17 @@ namespace ParkAutoHome.WsPA {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class CatalogoCombosRequestBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.Combos entC;
+        
         public CatalogoCombosRequestBody() {
+        }
+        
+        public CatalogoCombosRequestBody(ParkAutoHome.WsPA.Combos entC) {
+            this.entC = entC;
         }
     }
     
@@ -2758,9 +2786,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogEstamtos(request);
         }
         
-        public ParkAutoHome.WsPA.Estamtos[] CatalogEstamtos() {
+        public ParkAutoHome.WsPA.Estamtos[] CatalogEstamtos(ParkAutoHome.WsPA.Estamtos entEst) {
             ParkAutoHome.WsPA.CatalogEstamtosRequest inValue = new ParkAutoHome.WsPA.CatalogEstamtosRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogEstamtosRequestBody();
+            inValue.Body.entEst = entEst;
             ParkAutoHome.WsPA.CatalogEstamtosResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogEstamtos(inValue);
             return retVal.Body.CatalogEstamtosResult;
         }
@@ -2770,9 +2799,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogEstamtosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogEstamtosResponse> CatalogEstamtosAsync() {
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogEstamtosResponse> CatalogEstamtosAsync(ParkAutoHome.WsPA.Estamtos entEst) {
             ParkAutoHome.WsPA.CatalogEstamtosRequest inValue = new ParkAutoHome.WsPA.CatalogEstamtosRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogEstamtosRequestBody();
+            inValue.Body.entEst = entEst;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogEstamtosAsync(inValue);
         }
         
@@ -2804,9 +2834,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogEmpresa(request);
         }
         
-        public ParkAutoHome.WsPA.Empresas[] CatalogEmpresa() {
+        public ParkAutoHome.WsPA.Empresas[] CatalogEmpresa(ParkAutoHome.WsPA.Empresas entEmp) {
             ParkAutoHome.WsPA.CatalogEmpresaRequest inValue = new ParkAutoHome.WsPA.CatalogEmpresaRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogEmpresaRequestBody();
+            inValue.Body.entEmp = entEmp;
             ParkAutoHome.WsPA.CatalogEmpresaResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogEmpresa(inValue);
             return retVal.Body.CatalogEmpresaResult;
         }
@@ -2816,9 +2847,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogEmpresaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogEmpresaResponse> CatalogEmpresaAsync() {
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogEmpresaResponse> CatalogEmpresaAsync(ParkAutoHome.WsPA.Empresas entEmp) {
             ParkAutoHome.WsPA.CatalogEmpresaRequest inValue = new ParkAutoHome.WsPA.CatalogEmpresaRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogEmpresaRequestBody();
+            inValue.Body.entEmp = entEmp;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogEmpresaAsync(inValue);
         }
         
@@ -2927,9 +2959,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.DeterminantesActivas(request);
         }
         
-        public ParkAutoHome.WsPA.Determinantes[] DeterminantesActivas() {
+        public ParkAutoHome.WsPA.Determinantes[] DeterminantesActivas(ParkAutoHome.WsPA.Determinantes entDet) {
             ParkAutoHome.WsPA.DeterminantesActivasRequest inValue = new ParkAutoHome.WsPA.DeterminantesActivasRequest();
             inValue.Body = new ParkAutoHome.WsPA.DeterminantesActivasRequestBody();
+            inValue.Body.entDet = entDet;
             ParkAutoHome.WsPA.DeterminantesActivasResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).DeterminantesActivas(inValue);
             return retVal.Body.DeterminantesActivasResult;
         }
@@ -2939,9 +2972,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.DeterminantesActivasAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.DeterminantesActivasResponse> DeterminantesActivasAsync() {
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.DeterminantesActivasResponse> DeterminantesActivasAsync(ParkAutoHome.WsPA.Determinantes entDet) {
             ParkAutoHome.WsPA.DeterminantesActivasRequest inValue = new ParkAutoHome.WsPA.DeterminantesActivasRequest();
             inValue.Body = new ParkAutoHome.WsPA.DeterminantesActivasRequestBody();
+            inValue.Body.entDet = entDet;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).DeterminantesActivasAsync(inValue);
         }
         
@@ -3025,9 +3059,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogoCombos(request);
         }
         
-        public ParkAutoHome.WsPA.Combos[] CatalogoCombos() {
+        public ParkAutoHome.WsPA.Combos[] CatalogoCombos(ParkAutoHome.WsPA.Combos entC) {
             ParkAutoHome.WsPA.CatalogoCombosRequest inValue = new ParkAutoHome.WsPA.CatalogoCombosRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogoCombosRequestBody();
+            inValue.Body.entC = entC;
             ParkAutoHome.WsPA.CatalogoCombosResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoCombos(inValue);
             return retVal.Body.CatalogoCombosResult;
         }
@@ -3037,9 +3072,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogoCombosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoCombosResponse> CatalogoCombosAsync() {
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoCombosResponse> CatalogoCombosAsync(ParkAutoHome.WsPA.Combos entC) {
             ParkAutoHome.WsPA.CatalogoCombosRequest inValue = new ParkAutoHome.WsPA.CatalogoCombosRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogoCombosRequestBody();
+            inValue.Body.entC = entC;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoCombosAsync(inValue);
         }
         

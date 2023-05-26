@@ -10,6 +10,7 @@ using System.IO;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using ClassLibrary.Entities;
 
 namespace ParkAutoHome.Pages
 {
@@ -108,7 +109,16 @@ namespace ParkAutoHome.Pages
                 string contra = Encripta(txtpass.Text);
                 var resp = client.ValidaUsuarios(usuario, contra);
                 if (resp == 1)
+                {
+                    WsPA.Users entUser = new WsPA.Users();
+                    entUser.Nombre = "";
+                    entUser.Usuario = txtusuario.Text;
+                    entUser.Contraseña = txtpass.Text;
+                    WsPA.Users[] LstUser =  client.CatalogoUsuario(entUser);
+                    Session["IdUsuario"] = LstUser[0].id.ToString();
+                    Session["Nombre"] = LstUser[0].Nombre.ToString();
                     Response.Redirect("Configuracion.aspx");
+                }                    
                 else
                     Notificacion.VerMensaje("Usuario y/o incorrecto.", 2);
             }

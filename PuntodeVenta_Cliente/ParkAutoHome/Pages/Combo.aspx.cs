@@ -15,72 +15,35 @@ namespace ParkAutoHome.Pages
         {
             if (!IsPostBack)
             {
-                //CargarEstamtosCombo();
-                //CargarEmpresaCombo();
                 fillgrilla();
-                //Inicio();
-
-
-
-
-                try
-                {
-
-                }
-                catch (Exception ex)
-                {
-                }
+                Inicio();
             }
         }
         private void fillgrilla()
         {
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-
-            GVCombo.DataSource = client.CatalogoCombos();
-            GVCombo.DataBind();
-
-          
+            WsPA.Combos ent = new WsPA.Combos();
+            ent.Combo = TxtBNoCombo.Text;
+            ent.DescripcionCombo = TxtBCombo.Text;
+            GVCombo.DataSource = client.CatalogoCombos(ent);
+            GVCombo.DataBind();          
             txtNumCombo.Enabled = false;
             txtNumCombo.Enabled = false;
             ckEstatus.Enabled = false;
-
-        }
-
-    
-
-
-        protected void ddlEmpresas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void GVEmpresas_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-
         }
 
         protected void GVEmpresas_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             Session["IdCombo"] = GVCombo.SelectedRow.Cells[0].Text;
-
             this.txtNumCombo.Text = GVCombo.SelectedRow.Cells[1].Text;
             this.txtDescripcion.Text = GVCombo.SelectedRow.Cells[2].Text;
-
             var dd = (GVCombo.SelectedRow.Cells[3]).Text;
             this.ckEstatus.Checked = Convert.ToBoolean(dd);
-
-
-
-
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
-
-
             txtNumCombo.Enabled = false;
             txtDescripcion.Enabled = false;
-
-
             btnGuardar.Text = "Actualizar";
             btnGuardar.Enabled = false;
             btnNuevo.Enabled = false;
@@ -92,9 +55,6 @@ namespace ParkAutoHome.Pages
             txtNumCombo.Enabled = true;
             txtDescripcion.Enabled = true;
             ckEstatus.Enabled = true;
-
-            ;
-           
             btnGuardar.Text = "Guardar";
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
@@ -105,91 +65,53 @@ namespace ParkAutoHome.Pages
         {
             string Numcombo = txtNumCombo.Text;
             string descr = txtDescripcion.Text;
-
-
             if (Numcombo == "" || descr == "")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Capture todos los campos');", true);
-
+                Notificacion.VerMensaje("Capture todos los campos.", 2);
             }
             else
             {
-
-
                 if (btnGuardar.Text.Contains("Guardar"))
                 {
-
-
                     WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-
-
                     Combos ocom = new Combos();
-
-
-
-
-
                     ocom.Combo = txtNumCombo.Text.ToUpper();
                     ocom.DescripcionCombo = txtDescripcion.Text.ToUpper(); ;
                     ocom.Activo = ckEstatus.Checked;
-
-
                     string ResponseJson = JsonConvert.SerializeObject(ocom);
-
-
                     var c = client.NewCombo(ResponseJson);
-
                     if (c == -1)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('El Combo ya  Existe');", true);
+                    {                        
+                        Notificacion.VerMensaje("El combo ya se encuentra registrado.", 2);
                     }
-
-                    else {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Combro  Registrado Correctamente');", true);
+                    else 
+                    {                            
+                        Notificacion.VerMensaje("Combo registrado correctamente.", 1);
                     }
-
-
-
-                    
-
-
                     fillgrilla();
                     Inicio();
                 }
-
                 else if (btnGuardar.Text.Contains("Actualizar"))
                 {
-
-
                     WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-
-
                     Combos oCom = new Combos();
-
                     oCom.id = (string)(Session["IdCombo"]);
-
                     oCom.Combo = txtNumCombo.Text;
-                    oCom.DescripcionCombo = txtDescripcion.Text.ToUpper(); ;
-
+                    oCom.DescripcionCombo = txtDescripcion.Text.ToUpper();
                     oCom.Activo = ckEstatus.Checked;
 
                     string ResponseJson = JsonConvert.SerializeObject(oCom);
                     var c = client.Updatecombo(ResponseJson);
 
                     if (c == 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Combo NO Se Actualizo');", true);
+                    {                        
+                        Notificacion.VerMensaje("Combo no se actualizó.", 2);
                     }
-
                     else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Combro  Actualizado Correctamente');", true);
+                    {                        
+                        Notificacion.VerMensaje("Combo actualizado correctamente.", 1);
                     }
-
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Determinante   Actualizad');", true);
-
-
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Determinante   Actualizad');", true);
                     fillgrilla();
                     Inicio();
                 }
@@ -199,52 +121,42 @@ namespace ParkAutoHome.Pages
         protected void Button1_Click(object sender, EventArgs e)
         {
             txtNumCombo.Enabled = true;
-            txtDescripcion.Enabled = true;
-         
+            txtDescripcion.Enabled = true;         
             ckEstatus.Enabled = true;
-
-
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
-
             btnEditar.Enabled = false;
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-     
-           
             fillgrilla();
             Inicio();
         }
-
-
         public void Inicio()
         {
             txtNumCombo.Enabled = false;
-            txtDescripcion.Enabled = false;
-           
-
+            txtDescripcion.Enabled = false;  
             ckEstatus.Enabled = false;
-
             btnNuevo.Enabled = true;
             btnGuardar.Enabled = false;
             btnNuevo.Text = "Nuevo";
             btnEditar.Enabled = false;
             btnGuardar.Text = "Guardar";
-            //   this.txtid.Text = "";
-
             this.txtDescripcion.Text = "";
-
             this.txtNumCombo.Text = "";
-
             this.ckEstatus.Checked = false;
+        }
+        protected void BtnBusqueda_Click(object sender, EventArgs e)
+        {
+            fillgrilla();
+        }
 
-
-
-
-
-
+        protected void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            TxtBNoCombo.Text = string.Empty;
+            TxtBCombo.Text = string.Empty;
+            fillgrilla();
         }
     }
 }

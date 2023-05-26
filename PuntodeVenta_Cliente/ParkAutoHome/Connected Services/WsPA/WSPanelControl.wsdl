@@ -98,20 +98,12 @@
         </s:complexType>
       </s:element>
       <s:element name="CatalogEstamtos">
-        <s:complexType />
-      </s:element>
-      <s:element name="CatalogEstamtosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="CatalogEstamtosResult" type="tns:ArrayOfEstamtos" />
+            <s:element minOccurs="0" maxOccurs="1" name="entEst" type="tns:Estamtos" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfEstamtos">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Estamtos" nillable="true" type="tns:Estamtos" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="Estamtos">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="CveEmpresa" type="s:string" />
@@ -130,6 +122,18 @@
           <s:element minOccurs="0" maxOccurs="1" name="CveEstamtoAdmin" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="CatalogEstamtosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogEstamtosResult" type="tns:ArrayOfEstamtos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEstamtos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Estamtos" nillable="true" type="tns:Estamtos" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="EstamtosActivos">
         <s:complexType />
       </s:element>
@@ -141,8 +145,19 @@
         </s:complexType>
       </s:element>
       <s:element name="CatalogEmpresa">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entEmp" type="tns:Empresas" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
+      <s:complexType name="Empresas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEmpresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rfc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="CatalogEmpresaResponse">
         <s:complexType>
           <s:sequence>
@@ -153,13 +168,6 @@
       <s:complexType name="ArrayOfEmpresas">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="Empresas" nillable="true" type="tns:Empresas" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Empresas">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="idEmpresa" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NombreEmpresa" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Rfc" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="NewEstamto">
@@ -219,20 +227,12 @@
         </s:complexType>
       </s:element>
       <s:element name="DeterminantesActivas">
-        <s:complexType />
-      </s:element>
-      <s:element name="DeterminantesActivasResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeterminantesActivasResult" type="tns:ArrayOfDeterminantes" />
+            <s:element minOccurs="0" maxOccurs="1" name="entDet" type="tns:Determinantes" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfDeterminantes">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Determinantes" nillable="true" type="tns:Determinantes" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="Determinantes">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
@@ -243,6 +243,18 @@
           <s:element minOccurs="0" maxOccurs="1" name="Estacionamiento" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Determinante" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeterminantesActivasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeterminantesActivasResult" type="tns:ArrayOfDeterminantes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDeterminantes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Determinantes" nillable="true" type="tns:Determinantes" />
         </s:sequence>
       </s:complexType>
       <s:element name="NewProveedor">
@@ -305,8 +317,20 @@
         </s:sequence>
       </s:complexType>
       <s:element name="CatalogoCombos">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entC" type="tns:Combos" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
+      <s:complexType name="Combos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Combo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionCombo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="CatalogoCombosResponse">
         <s:complexType>
           <s:sequence>
@@ -317,14 +341,6 @@
       <s:complexType name="ArrayOfCombos">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="Combos" nillable="true" type="tns:Combos" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Combos">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Combo" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="DescripcionCombo" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="CatalogoCombosdeterminantes">

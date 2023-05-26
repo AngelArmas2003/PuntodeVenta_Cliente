@@ -209,6 +209,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Controles\Notificacion.ascx" />
+    <Content Include="Controles\WucSesion.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -298,6 +299,13 @@
     </Compile>
     <Compile Include="Controles\Notificacion.ascx.designer.cs">
       <DependentUpon>Notificacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\WucSesion.ascx.cs">
+      <DependentUpon>WucSesion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\WucSesion.ascx.designer.cs">
+      <DependentUpon>WucSesion.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
