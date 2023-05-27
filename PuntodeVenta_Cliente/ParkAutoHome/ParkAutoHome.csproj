@@ -197,6 +197,9 @@
     <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.ValidaUsuarios2Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\WsPA\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

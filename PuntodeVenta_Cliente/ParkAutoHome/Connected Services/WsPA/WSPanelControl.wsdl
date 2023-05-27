@@ -346,10 +346,20 @@
       <s:element name="CatalogoCombosdeterminantes">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="combo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ent" type="tns:ComboDeterminantes" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ComboDeterminantes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroCombo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Determinante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombrePlaza" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Opcion" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="CatalogoCombosdeterminantesResponse">
         <s:complexType>
           <s:sequence>
@@ -362,15 +372,20 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="ComboDeterminantes" nillable="true" type="tns:ComboDeterminantes" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ComboDeterminantes">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NumeroCombo" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Determinante" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NombrePlaza" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
-        </s:sequence>
-      </s:complexType>
+      <s:element name="ComboDeterminanteReg_Act">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ComboDeterminanteReg_ActResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ComboDeterminanteReg_ActResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="NewCombo">
         <s:complexType>
           <s:sequence>
@@ -529,6 +544,12 @@
   <wsdl:message name="CatalogoCombosdeterminantesSoapOut">
     <wsdl:part name="parameters" element="tns:CatalogoCombosdeterminantesResponse" />
   </wsdl:message>
+  <wsdl:message name="ComboDeterminanteReg_ActSoapIn">
+    <wsdl:part name="parameters" element="tns:ComboDeterminanteReg_Act" />
+  </wsdl:message>
+  <wsdl:message name="ComboDeterminanteReg_ActSoapOut">
+    <wsdl:part name="parameters" element="tns:ComboDeterminanteReg_ActResponse" />
+  </wsdl:message>
   <wsdl:message name="NewComboSoapIn">
     <wsdl:part name="parameters" element="tns:NewCombo" />
   </wsdl:message>
@@ -623,6 +644,10 @@
     <wsdl:operation name="CatalogoCombosdeterminantes">
       <wsdl:input message="tns:CatalogoCombosdeterminantesSoapIn" />
       <wsdl:output message="tns:CatalogoCombosdeterminantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ComboDeterminanteReg_Act">
+      <wsdl:input message="tns:ComboDeterminanteReg_ActSoapIn" />
+      <wsdl:output message="tns:ComboDeterminanteReg_ActSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="NewCombo">
       <wsdl:input message="tns:NewComboSoapIn" />
@@ -803,6 +828,15 @@
     </wsdl:operation>
     <wsdl:operation name="CatalogoCombosdeterminantes">
       <soap:operation soapAction="http://tempuri.org/CatalogoCombosdeterminantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComboDeterminanteReg_Act">
+      <soap:operation soapAction="http://tempuri.org/ComboDeterminanteReg_Act" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1004,6 +1038,15 @@
     </wsdl:operation>
     <wsdl:operation name="CatalogoCombosdeterminantes">
       <soap12:operation soapAction="http://tempuri.org/CatalogoCombosdeterminantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComboDeterminanteReg_Act">
+      <soap12:operation soapAction="http://tempuri.org/ComboDeterminanteReg_Act" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -14,7 +14,10 @@
                         <asp:Label ID="Combo" runat="server" Text="COMBO"></asp:Label>
                     </div>
                     <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                        <asp:DropDownList ID="ddlCombo" runat="server" Height="30px" Width="395px" AutoPostBack="True" OnTextChanged="ddlCombo_TextChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="DdlCombo" runat="server" Height="30px" Width="395px" AutoPostBack="true"
+                            OnTextChanged="DdlCombo_TextChanged">
+                        </asp:DropDownList>
+
                     </div>
                 </div>
                 <p class="lead"><span style="color: rgb(9,3,255); font-family: &quot; helvetica neue&quot; , helvetica, arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Información de Tarifas</span></p>
@@ -58,7 +61,15 @@
                             <asp:Label ID="lblDeterminante" runat="server" Text="Determinante"></asp:Label>
                         </div>
                         <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:DropDownList ID="ddlDeterminante" runat="server" Height="30px" Width="395px" AutoPostBack="True" OnTextChanged="ddlCombo_TextChanged"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlDeterminante" runat="server" Height="30px" Width="395px" AutoPostBack="false"></asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="display: flex; justify-content: right; padding: 10px;">
+                            <asp:Label ID="Label1" runat="server" Text="Estatus"></asp:Label>
+                        </div>
+                        <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                            <asp:CheckBox ID="ChkEstatus" runat="server" />
                         </div>
                     </div>
                     <div class="row" style="padding: 10px; justify-content: center; display: flex;">
@@ -83,6 +94,9 @@
                 </div>
             </div>
         </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="DdlCombo" EventName="TextChanged" />
+        </Triggers>
     </asp:UpdatePanel>
 
 </asp:Content>

@@ -874,6 +874,8 @@ namespace ParkAutoHome.WsPA {
         
         private bool ActivoField;
         
+        private int OpcionField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -945,6 +947,19 @@ namespace ParkAutoHome.WsPA {
                 if ((this.ActivoField.Equals(value) != true)) {
                     this.ActivoField = value;
                     this.RaisePropertyChanged("Activo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public int Opcion {
+            get {
+                return this.OpcionField;
+            }
+            set {
+                if ((this.OpcionField.Equals(value) != true)) {
+                    this.OpcionField = value;
+                    this.RaisePropertyChanged("Opcion");
                 }
             }
         }
@@ -1089,12 +1104,19 @@ namespace ParkAutoHome.WsPA {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoCombos", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoCombosResponse> CatalogoCombosAsync(ParkAutoHome.WsPA.CatalogoCombosRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento combo del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento ent del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoCombosdeterminantes", ReplyAction="*")]
         ParkAutoHome.WsPA.CatalogoCombosdeterminantesResponse CatalogoCombosdeterminantes(ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoCombosdeterminantes", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoCombosdeterminantesResponse> CatalogoCombosdeterminantesAsync(ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento obj del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ComboDeterminanteReg_Act", ReplyAction="*")]
+        ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse ComboDeterminanteReg_Act(ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ComboDeterminanteReg_Act", ReplyAction="*")]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse> ComboDeterminanteReg_ActAsync(ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento obj del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewCombo", ReplyAction="*")]
@@ -2356,13 +2378,13 @@ namespace ParkAutoHome.WsPA {
     public partial class CatalogoCombosdeterminantesRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string combo;
+        public ParkAutoHome.WsPA.ComboDeterminantes ent;
         
         public CatalogoCombosdeterminantesRequestBody() {
         }
         
-        public CatalogoCombosdeterminantesRequestBody(string combo) {
-            this.combo = combo;
+        public CatalogoCombosdeterminantesRequestBody(ParkAutoHome.WsPA.ComboDeterminantes ent) {
+            this.ent = ent;
         }
     }
     
@@ -2397,6 +2419,74 @@ namespace ParkAutoHome.WsPA {
         
         public CatalogoCombosdeterminantesResponseBody(ParkAutoHome.WsPA.ComboDeterminantes[] CatalogoCombosdeterminantesResult) {
             this.CatalogoCombosdeterminantesResult = CatalogoCombosdeterminantesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ComboDeterminanteReg_ActRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ComboDeterminanteReg_Act", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequestBody Body;
+        
+        public ComboDeterminanteReg_ActRequest() {
+        }
+        
+        public ComboDeterminanteReg_ActRequest(ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ComboDeterminanteReg_ActRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string obj;
+        
+        public ComboDeterminanteReg_ActRequestBody() {
+        }
+        
+        public ComboDeterminanteReg_ActRequestBody(string obj) {
+            this.obj = obj;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ComboDeterminanteReg_ActResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ComboDeterminanteReg_ActResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponseBody Body;
+        
+        public ComboDeterminanteReg_ActResponse() {
+        }
+        
+        public ComboDeterminanteReg_ActResponse(ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ComboDeterminanteReg_ActResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int ComboDeterminanteReg_ActResult;
+        
+        public ComboDeterminanteReg_ActResponseBody() {
+        }
+        
+        public ComboDeterminanteReg_ActResponseBody(int ComboDeterminanteReg_ActResult) {
+            this.ComboDeterminanteReg_ActResult = ComboDeterminanteReg_ActResult;
         }
     }
     
@@ -3084,10 +3174,10 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogoCombosdeterminantes(request);
         }
         
-        public ParkAutoHome.WsPA.ComboDeterminantes[] CatalogoCombosdeterminantes(string combo) {
+        public ParkAutoHome.WsPA.ComboDeterminantes[] CatalogoCombosdeterminantes(ParkAutoHome.WsPA.ComboDeterminantes ent) {
             ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequest inValue = new ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequestBody();
-            inValue.Body.combo = combo;
+            inValue.Body.ent = ent;
             ParkAutoHome.WsPA.CatalogoCombosdeterminantesResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoCombosdeterminantes(inValue);
             return retVal.Body.CatalogoCombosdeterminantesResult;
         }
@@ -3097,11 +3187,36 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.CatalogoCombosdeterminantesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoCombosdeterminantesResponse> CatalogoCombosdeterminantesAsync(string combo) {
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoCombosdeterminantesResponse> CatalogoCombosdeterminantesAsync(ParkAutoHome.WsPA.ComboDeterminantes ent) {
             ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequest inValue = new ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequest();
             inValue.Body = new ParkAutoHome.WsPA.CatalogoCombosdeterminantesRequestBody();
-            inValue.Body.combo = combo;
+            inValue.Body.ent = ent;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoCombosdeterminantesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse ParkAutoHome.WsPA.WSPanelControlSoap.ComboDeterminanteReg_Act(ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest request) {
+            return base.Channel.ComboDeterminanteReg_Act(request);
+        }
+        
+        public int ComboDeterminanteReg_Act(string obj) {
+            ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest inValue = new ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest();
+            inValue.Body = new ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequestBody();
+            inValue.Body.obj = obj;
+            ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).ComboDeterminanteReg_Act(inValue);
+            return retVal.Body.ComboDeterminanteReg_ActResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse> ParkAutoHome.WsPA.WSPanelControlSoap.ComboDeterminanteReg_ActAsync(ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest request) {
+            return base.Channel.ComboDeterminanteReg_ActAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse> ComboDeterminanteReg_ActAsync(string obj) {
+            ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest inValue = new ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequest();
+            inValue.Body = new ParkAutoHome.WsPA.ComboDeterminanteReg_ActRequestBody();
+            inValue.Body.obj = obj;
+            return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).ComboDeterminanteReg_ActAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
