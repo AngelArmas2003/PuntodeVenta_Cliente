@@ -11,7 +11,7 @@
                 <p class="lead"><span style="color: rgb(85, 85, 85); font-family: &quot; helvetica neue&quot; , helvetica, arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Seleccione una combo</span></p>
                 <div class="row">
                     <div class="col-md-5" style="display: flex; justify-content: right; padding: 10px;">
-                        <asp:Label ID="Combo" runat="server" Text="COMBO"></asp:Label>
+                        <asp:Label ID="Combo" runat="server" Text="Combo"></asp:Label>
                     </div>
                     <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
                         <asp:DropDownList ID="DdlCombo" runat="server" Height="30px" Width="395px" AutoPostBack="true"
@@ -75,7 +75,7 @@
                     <div class="row" style="padding: 10px; justify-content: center; display: flex;">
                         <div class="col-md-2">
                             <asp:Button ID="btnNuevo" runat="server" Height="43px" Text="Nuevo" Width="112px" OnClick="Button2_Click" class="btn btn-primary btn-lg" />
-                        </div>
+                        </div>                        
                         <div class="col-md-2">
                             <asp:Button ID="btnGuardar" runat="server" Text="Guardar" Height="43px" OnClick="btnEditar_Click" Width="114px" class="btn btn-primary btn-lg" />
                         </div>

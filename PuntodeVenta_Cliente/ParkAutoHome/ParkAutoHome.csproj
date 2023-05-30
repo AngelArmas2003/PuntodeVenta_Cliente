@@ -200,6 +200,12 @@
     <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.ComboDeterminanteReg_ActResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.TarifaCveConsultaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\WsPA\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -232,6 +238,7 @@
     <Content Include="Pages\Empresas.aspx" />
     <Content Include="Pages\Estacionamientos.aspx" />
     <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\TarifaExcedente.aspx" />
     <Content Include="Pages\Tarifas.aspx" />
     <Content Include="Pages\TiendasCombo.aspx" />
     <Content Include="Pages\Usuarios.aspx" />
@@ -354,6 +361,13 @@
     </Compile>
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TarifaExcedente.aspx.cs">
+      <DependentUpon>TarifaExcedente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TarifaExcedente.aspx.designer.cs">
+      <DependentUpon>TarifaExcedente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Tarifas.aspx.cs">
       <DependentUpon>Tarifas.aspx</DependentUpon>

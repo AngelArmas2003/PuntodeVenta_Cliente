@@ -72,7 +72,7 @@ namespace ParkAutoHome.Pages
             string dete = txtDeterminante.Text;
             if (prov == "" || dete == "")
             {
-                Notificacion.VerMensaje("pture todos los campos.", 2);
+                Notificacion.VerMensaje("Capture todos los campos.", 2);
             }
             else
             {

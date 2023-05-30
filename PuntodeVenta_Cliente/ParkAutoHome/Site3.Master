@@ -56,9 +56,11 @@
                         <li><a runat="server" href="~/Pages/Empresas">Empresas</a></li>
                         <li><a runat="server" href="~/Pages/Estacionamientos">Estacionamientos</a></li>
                         <li><a runat="server" href="~/Pages/Determinantes">Determinante</a></li>
-                        <li><a runat="server" href="~/Pages/Tarifas">Tarifas</a></li>
+                        <li><a runat="server" href="~/Pages/Tarifas">Tarifa Determinante</a></li>
+                        <li><a runat="server" href="~/Pages/TarifaExcedente">Tarifa Excedente</a></li>
                         <li><a runat="server" href="~/Pages/Combo">Combo</a></li>
                         <li><a runat="server" href="~/Pages/TiendasCombo">Tiendas Combo</a></li>
+                        <%--<li><a runat="server" href="~/Pages/Reportes">Reportes</a></li>--%>
                     </ul>
                 </div>
             </div>

@@ -16,6 +16,7 @@ namespace ParkAutoHome.Pages
             {
                 Inicio();
                 CargarEstamosActivas();
+                DeterminantesConsulta();
             }
         }
 

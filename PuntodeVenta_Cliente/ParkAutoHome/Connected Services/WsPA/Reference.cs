@@ -635,6 +635,8 @@ namespace ParkAutoHome.WsPA {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DeterminanteField;
         
+        private int OpcionField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -745,6 +747,19 @@ namespace ParkAutoHome.WsPA {
                 if ((object.ReferenceEquals(this.DeterminanteField, value) != true)) {
                     this.DeterminanteField = value;
                     this.RaisePropertyChanged("Determinante");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public int Opcion {
+            get {
+                return this.OpcionField;
+            }
+            set {
+                if ((this.OpcionField.Equals(value) != true)) {
+                    this.OpcionField = value;
+                    this.RaisePropertyChanged("Opcion");
                 }
             }
         }
@@ -1096,6 +1111,20 @@ namespace ParkAutoHome.WsPA {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TafiasDeterminantes", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.TafiasDeterminantesResponse> TafiasDeterminantesAsync(ParkAutoHome.WsPA.TafiasDeterminantesRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento dete del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TarifaCveConsulta", ReplyAction="*")]
+        ParkAutoHome.WsPA.TarifaCveConsultaResponse TarifaCveConsulta(ParkAutoHome.WsPA.TarifaCveConsultaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TarifaCveConsulta", ReplyAction="*")]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.TarifaCveConsultaResponse> TarifaCveConsultaAsync(ParkAutoHome.WsPA.TarifaCveConsultaRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento obj del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TarifaDetExceReg_Act", ReplyAction="*")]
+        ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse TarifaDetExceReg_Act(ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TarifaDetExceReg_Act", ReplyAction="*")]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse> TarifaDetExceReg_ActAsync(ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento entC del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoCombos", ReplyAction="*")]
@@ -2242,12 +2271,12 @@ namespace ParkAutoHome.WsPA {
     public partial class TafiasDeterminantesRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string dete;
+        public ParkAutoHome.WsPA.Tarifas dete;
         
         public TafiasDeterminantesRequestBody() {
         }
         
-        public TafiasDeterminantesRequestBody(string dete) {
+        public TafiasDeterminantesRequestBody(ParkAutoHome.WsPA.Tarifas dete) {
             this.dete = dete;
         }
     }
@@ -2283,6 +2312,142 @@ namespace ParkAutoHome.WsPA {
         
         public TafiasDeterminantesResponseBody(ParkAutoHome.WsPA.Tarifas[] TafiasDeterminantesResult) {
             this.TafiasDeterminantesResult = TafiasDeterminantesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class TarifaCveConsultaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="TarifaCveConsulta", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.TarifaCveConsultaRequestBody Body;
+        
+        public TarifaCveConsultaRequest() {
+        }
+        
+        public TarifaCveConsultaRequest(ParkAutoHome.WsPA.TarifaCveConsultaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class TarifaCveConsultaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.Tarifas dete;
+        
+        public TarifaCveConsultaRequestBody() {
+        }
+        
+        public TarifaCveConsultaRequestBody(ParkAutoHome.WsPA.Tarifas dete) {
+            this.dete = dete;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class TarifaCveConsultaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="TarifaCveConsultaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.TarifaCveConsultaResponseBody Body;
+        
+        public TarifaCveConsultaResponse() {
+        }
+        
+        public TarifaCveConsultaResponse(ParkAutoHome.WsPA.TarifaCveConsultaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class TarifaCveConsultaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string TarifaCveConsultaResult;
+        
+        public TarifaCveConsultaResponseBody() {
+        }
+        
+        public TarifaCveConsultaResponseBody(string TarifaCveConsultaResult) {
+            this.TarifaCveConsultaResult = TarifaCveConsultaResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class TarifaDetExceReg_ActRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="TarifaDetExceReg_Act", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.TarifaDetExceReg_ActRequestBody Body;
+        
+        public TarifaDetExceReg_ActRequest() {
+        }
+        
+        public TarifaDetExceReg_ActRequest(ParkAutoHome.WsPA.TarifaDetExceReg_ActRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class TarifaDetExceReg_ActRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string obj;
+        
+        public TarifaDetExceReg_ActRequestBody() {
+        }
+        
+        public TarifaDetExceReg_ActRequestBody(string obj) {
+            this.obj = obj;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class TarifaDetExceReg_ActResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="TarifaDetExceReg_ActResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.TarifaDetExceReg_ActResponseBody Body;
+        
+        public TarifaDetExceReg_ActResponse() {
+        }
+        
+        public TarifaDetExceReg_ActResponse(ParkAutoHome.WsPA.TarifaDetExceReg_ActResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class TarifaDetExceReg_ActResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int TarifaDetExceReg_ActResult;
+        
+        public TarifaDetExceReg_ActResponseBody() {
+        }
+        
+        public TarifaDetExceReg_ActResponseBody(int TarifaDetExceReg_ActResult) {
+            this.TarifaDetExceReg_ActResult = TarifaDetExceReg_ActResult;
         }
     }
     
@@ -3124,7 +3289,7 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.TafiasDeterminantes(request);
         }
         
-        public ParkAutoHome.WsPA.Tarifas[] TafiasDeterminantes(string dete) {
+        public ParkAutoHome.WsPA.Tarifas[] TafiasDeterminantes(ParkAutoHome.WsPA.Tarifas dete) {
             ParkAutoHome.WsPA.TafiasDeterminantesRequest inValue = new ParkAutoHome.WsPA.TafiasDeterminantesRequest();
             inValue.Body = new ParkAutoHome.WsPA.TafiasDeterminantesRequestBody();
             inValue.Body.dete = dete;
@@ -3137,11 +3302,61 @@ namespace ParkAutoHome.WsPA {
             return base.Channel.TafiasDeterminantesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.TafiasDeterminantesResponse> TafiasDeterminantesAsync(string dete) {
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.TafiasDeterminantesResponse> TafiasDeterminantesAsync(ParkAutoHome.WsPA.Tarifas dete) {
             ParkAutoHome.WsPA.TafiasDeterminantesRequest inValue = new ParkAutoHome.WsPA.TafiasDeterminantesRequest();
             inValue.Body = new ParkAutoHome.WsPA.TafiasDeterminantesRequestBody();
             inValue.Body.dete = dete;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).TafiasDeterminantesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ParkAutoHome.WsPA.TarifaCveConsultaResponse ParkAutoHome.WsPA.WSPanelControlSoap.TarifaCveConsulta(ParkAutoHome.WsPA.TarifaCveConsultaRequest request) {
+            return base.Channel.TarifaCveConsulta(request);
+        }
+        
+        public string TarifaCveConsulta(ParkAutoHome.WsPA.Tarifas dete) {
+            ParkAutoHome.WsPA.TarifaCveConsultaRequest inValue = new ParkAutoHome.WsPA.TarifaCveConsultaRequest();
+            inValue.Body = new ParkAutoHome.WsPA.TarifaCveConsultaRequestBody();
+            inValue.Body.dete = dete;
+            ParkAutoHome.WsPA.TarifaCveConsultaResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).TarifaCveConsulta(inValue);
+            return retVal.Body.TarifaCveConsultaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.TarifaCveConsultaResponse> ParkAutoHome.WsPA.WSPanelControlSoap.TarifaCveConsultaAsync(ParkAutoHome.WsPA.TarifaCveConsultaRequest request) {
+            return base.Channel.TarifaCveConsultaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.TarifaCveConsultaResponse> TarifaCveConsultaAsync(ParkAutoHome.WsPA.Tarifas dete) {
+            ParkAutoHome.WsPA.TarifaCveConsultaRequest inValue = new ParkAutoHome.WsPA.TarifaCveConsultaRequest();
+            inValue.Body = new ParkAutoHome.WsPA.TarifaCveConsultaRequestBody();
+            inValue.Body.dete = dete;
+            return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).TarifaCveConsultaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse ParkAutoHome.WsPA.WSPanelControlSoap.TarifaDetExceReg_Act(ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest request) {
+            return base.Channel.TarifaDetExceReg_Act(request);
+        }
+        
+        public int TarifaDetExceReg_Act(string obj) {
+            ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest inValue = new ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest();
+            inValue.Body = new ParkAutoHome.WsPA.TarifaDetExceReg_ActRequestBody();
+            inValue.Body.obj = obj;
+            ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).TarifaDetExceReg_Act(inValue);
+            return retVal.Body.TarifaDetExceReg_ActResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse> ParkAutoHome.WsPA.WSPanelControlSoap.TarifaDetExceReg_ActAsync(ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest request) {
+            return base.Channel.TarifaDetExceReg_ActAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse> TarifaDetExceReg_ActAsync(string obj) {
+            ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest inValue = new ParkAutoHome.WsPA.TarifaDetExceReg_ActRequest();
+            inValue.Body = new ParkAutoHome.WsPA.TarifaDetExceReg_ActRequestBody();
+            inValue.Body.obj = obj;
+            return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).TarifaDetExceReg_ActAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
