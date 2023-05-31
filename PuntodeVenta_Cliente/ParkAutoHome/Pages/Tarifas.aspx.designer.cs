@@ -60,6 +60,33 @@ namespace ParkAutoHome.Pages
         protected global::System.Web.UI.WebControls.GridView GvTarifas;
 
         /// <summary>
+        /// Control HdMF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdMF;
+
+        /// <summary>
+        /// Control HdIMI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdIMI;
+
+        /// <summary>
+        /// Control HdTotA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdTotA;
+
+        /// <summary>
         /// Control Label7.
         /// </summary>
         /// <remarks>

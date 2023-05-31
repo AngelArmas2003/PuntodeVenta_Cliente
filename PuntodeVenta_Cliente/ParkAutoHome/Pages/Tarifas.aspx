@@ -71,6 +71,10 @@
                 </asp:GridView>
                 <br />
                 <br />
+                <asp:HiddenField runat="server" ID="HdMF"/>
+                <asp:HiddenField runat="server" ID="HdIMI"/>
+                <asp:HiddenField runat="server" ID="HdTotA"/>
+                
                 <div align="center">
                     <div class="row">
                         <div class="col-md-7" style="display: flex; justify-content: right; padding: 10px; margin: 4px -37px;">

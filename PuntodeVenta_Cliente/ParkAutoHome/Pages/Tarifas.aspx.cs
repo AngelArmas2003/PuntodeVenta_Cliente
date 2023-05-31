@@ -10,11 +10,11 @@ namespace ParkAutoHome.Pages
 {
     public partial class Tarifas : System.Web.UI.Page
     {
-
+        public List<WsPA.Tarifas> LstTarifaP = new List<WsPA.Tarifas>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {              
+            {
                 CargarEstamosActivas();
                 TarifasConsulta();
                 Inicio();
@@ -48,21 +48,21 @@ namespace ParkAutoHome.Pages
             switch (btn.ID)
             {
                 case "btnNuevo":
-                    WsPA.Tarifas tarifa = new WsPA.Tarifas();
-                    WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-                    string clave = "";
-                    tarifa.Determinante = TxtDeterminante.Text;
-                    tarifa.Opcion = 1;
-                    clave = client.TarifaCveConsulta(tarifa);
-                    txtCveTarifa.Text = Convert.ToInt32(clave).ToString("D2");
+                    //WsPA.Tarifas tarifa = new WsPA.Tarifas();
+                    //WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                    //string clave = "";
+                    //tarifa.Determinante = TxtDeterminante.Text;
+                    //tarifa.Opcion = 1;
+                    //clave = client.TarifaCveConsulta(tarifa);
+                    //txtCveTarifa.Text = Convert.ToInt32(clave).ToString("D2");
+                    txtCveTarifa.Enabled = true;
                     break;
                 case "BtnAgregar":
-                    txtCveTarifa.Text = Convert.ToInt32(GvTarifas.Rows[0].Cells[1].Text.ToString()).ToString("D2");
+                    txtCveTarifa.Text = Convert.ToInt32(GvTarifas.Rows[GvTarifas.Rows.Count - 1].Cells[1].Text.ToString()).ToString("D2");
                     break;
             }
 
             #endregion
-
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
@@ -76,19 +76,19 @@ namespace ParkAutoHome.Pages
                 }
                 WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
                 WsPA.Tarifas tarifa = new WsPA.Tarifas();
-                tarifa.CveTarifa = txtCveTarifa.Text;
-                tarifa.Minutos = Convert.ToInt32(TxtMinutos.Text);
-                tarifa.ImporteMinutos = Convert.ToInt32(txtImporte.Text);
-                tarifa.MinutoInicial = Convert.ToInt32(TxtMinI.Text);
-                tarifa.MinutoFinal = Convert.ToInt32(TxtMinF.Text);
-                tarifa.TotalAcumulado = Convert.ToDouble(TxtTotalA.Text);
-                tarifa.Determinante = TxtDeterminante.Text;
+
 
                 if (btnGuardar.Text.Contains("Guardar"))
                 {
                     tarifa.Opcion = 1;
                     tarifa.id = "0";
-
+                    tarifa.CveTarifa = txtCveTarifa.Text;
+                    tarifa.Minutos = Convert.ToInt32(TxtMinutos.Text);
+                    tarifa.ImporteMinutos = Convert.ToInt32(txtImporte.Text);
+                    tarifa.MinutoInicial = Convert.ToInt32(TxtMinI.Text);
+                    tarifa.MinutoFinal = Convert.ToInt32(TxtMinF.Text);
+                    tarifa.TotalAcumulado = Convert.ToDouble(TxtTotalA.Text);
+                    tarifa.Determinante = TxtDeterminante.Text;
                     string ResponseJson = JsonConvert.SerializeObject(tarifa);
                     var g = client.TarifaDetExceReg_Act(ResponseJson);
                     if (g <= 0)
@@ -97,35 +97,65 @@ namespace ParkAutoHome.Pages
                     }
                     else
                     {
-                        Notificacion.VerMensaje("Tarifa determinante registrada correctamente.", 1);                        
+                        Notificacion.VerMensaje("Tarifa determinante registrada correctamente.", 1);
                         TarifasConsulta();
                         Inicio();
                     }
                 }
                 else if (btnGuardar.Text.Contains("Actualizar"))
-                {
-                    tarifa.Opcion = 2;
-                    tarifa.id = Session["Id"].ToString();
-                    string ResponseJson = JsonConvert.SerializeObject(tarifa);
-                    var a = client.TarifaDetExceReg_Act(ResponseJson);
-                    if (a <= 0)
+                {                    
+                    LstTarifaP = new List<WsPA.Tarifas>();
+                    List<WsPA.Tarifas> LstTarifaPAnt = new List<WsPA.Tarifas>();
+                    LstTarifaP = (List<WsPA.Tarifas>)Session["LstTarifa"];
+                    int i = 0;
+                    foreach (var item in LstTarifaP.Where(x => x.TotalAcumulado >= Convert.ToDouble(HdTotA.Value)))
                     {
-                        Notificacion.VerMensaje("Error al realizar el  registro.", 3);
+                        tarifa = new WsPA.Tarifas();                        
+                        tarifa.Opcion = 2;
+                        //para el primer registro
+                        if (i == 0)
+                        {
+                            tarifa.id = Session["Id"].ToString();
+                            tarifa.CveTarifa = txtCveTarifa.Text;
+                            tarifa.Minutos = Convert.ToInt32(TxtMinutos.Text);
+                            tarifa.ImporteMinutos = Convert.ToInt32(txtImporte.Text);
+                            tarifa.MinutoInicial = Convert.ToInt32(TxtMinI.Text);
+                            tarifa.MinutoFinal = Convert.ToInt32(TxtMinF.Text);
+                            tarifa.TotalAcumulado = Convert.ToDouble(TxtTotalA.Text);
+                            tarifa.Determinante = TxtDeterminante.Text;
+                            string ResponseJson = JsonConvert.SerializeObject(tarifa);
+                            var a = client.TarifaDetExceReg_Act(ResponseJson);
+                        }
+                        else
+                        {//a partir del segundo registro                          
+                            tarifa.id = item.id;
+                            tarifa.CveTarifa = item.CveTarifa;
+                            tarifa.Minutos = Convert.ToInt32(item.Minutos);
+                            tarifa.ImporteMinutos = Convert.ToInt32(item.ImporteMinutos);
+                            tarifa.MinutoInicial = Convert.ToInt32(LstTarifaPAnt.FirstOrDefault().MinutoFinal + 1);
+                            tarifa.MinutoFinal = Convert.ToInt32(LstTarifaPAnt.FirstOrDefault().MinutoFinal + item.Minutos);
+                            tarifa.TotalAcumulado = Convert.ToDouble(LstTarifaPAnt.FirstOrDefault().TotalAcumulado + item.ImporteMinutos);
+                            tarifa.Determinante = TxtDeterminante.Text;
+                            string ResponseJson = JsonConvert.SerializeObject(tarifa);
+                            var a = client.TarifaDetExceReg_Act(ResponseJson);                            
+                        }
+                        LstTarifaPAnt = new List<WsPA.Tarifas>();
+                        LstTarifaPAnt.Add(tarifa);
+                        i = i + 1;
                     }
-                    else
-                    {
-                        Notificacion.VerMensaje("Tarifa determinante actualizada correctamente.", 1);                        
-                        TarifasConsulta();
-                        Inicio();
-                    }
+                    Notificacion.VerMensaje("Tarifa(s) determinante(s) actualizada(s) correctamente.", 1);
+                    Session["LstTarifa"] = "";
+                    TarifasConsulta();
+                    Inicio();
+                    //Session["Index"] = "";                    
+                    //Session["LstTarifaPAnt"] = "";
+                    HdTotA.Value = "";
                 }
-                
             }
             catch (Exception ex)
             {
                 Notificacion.VerMensaje(ex.ToString(), 3);
             }
-            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -141,7 +171,7 @@ namespace ParkAutoHome.Pages
         {
             Inicio();
             TarifasConsulta();
-        }      
+        }
 
         protected void ddlEmpresas_TextChanged(object sender, EventArgs e)
         {
@@ -151,7 +181,11 @@ namespace ParkAutoHome.Pages
 
         public void Inicio()
         {
+            //if (GvTarifas.Rows.Count > 0)
             txtCveTarifa.Enabled = false;
+            //else
+            //    txtCveTarifa.Enabled = true;
+
             TxtMinutos.Enabled = false;
             TxtMinI.Enabled = false;
             TxtMinF.Enabled = false;
@@ -173,6 +207,10 @@ namespace ParkAutoHome.Pages
                 BtnAgregar.Enabled = true;
             else
                 BtnAgregar.Enabled = false;
+            if (GvTarifas.Rows.Count > 0)
+                btnNuevo.Enabled = false;
+            else
+                btnNuevo.Enabled = true;
             btnNuevo.Text = "Nuevo";
             btnEditar.Enabled = false;
             btnGuardar.Text = "Guardar";
@@ -182,10 +220,25 @@ namespace ParkAutoHome.Pages
         {
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
             WsPA.Tarifas entT = new WsPA.Tarifas();
-            entT.Determinante= ddlEmpresas.SelectedValue;
+            entT.Determinante = ddlEmpresas.SelectedValue;
             entT.Opcion = 1;
-            GvTarifas.DataSource = client.TafiasDeterminantes(entT);
-            GvTarifas.DataBind();
+            WsPA.Tarifas[] entTR = client.TafiasDeterminantes(entT);
+            if (entTR.Length > 0)
+            {
+                LstTarifaP = new List<WsPA.Tarifas>();
+                LstTarifaP = entTR.ToList();
+                Session["LstTarifa"] = LstTarifaP.ToList();
+                //LstTarifaPAnt = entTR.ToList();
+                //Session["LstTarifaPAnt"] = LstTarifaPAnt.ToList();
+                GvTarifas.DataSource = LstTarifaP.ToList();
+                GvTarifas.DataBind();
+            }
+            else
+            {
+                List<string> lstv = new List<string>();
+                GvTarifas.DataSource = lstv.ToList();
+                GvTarifas.DataBind();
+            }
         }
 
         protected void GvTarifas_SelectedIndexChanged(object sender, EventArgs e)
@@ -212,36 +265,64 @@ namespace ParkAutoHome.Pages
             TxtTotalA.Text = GvTarifas.SelectedRow.Cells[6].Text;
             txtImporte.Text = GvTarifas.SelectedRow.Cells[3].Text;
             TxtDeterminante.Text = GvTarifas.SelectedRow.Cells[7].Text;
+            Session["Index"] = GvTarifas.SelectedIndex;
+            HdTotA.Value = GvTarifas.SelectedRow.Cells[6].Text;
+            //if (GvTarifas.SelectedIndex >= 1)
+            //{
+            //    LstTarifaPAnt = new List<WsPA.Tarifas>();
+            //    LstTarifaPAnt = (List<WsPA.Tarifas>)Session["LstTarifaPAnt"];
+            //    Session["LstTarifaPAnt"] = "";
+            //    Session["LstTarifaPAnt"] = LstTarifaPAnt.Where(x => x.TotalAcumulado == Convert.ToDouble(GvTarifas.Rows[Convert.ToInt32(Session["Index"]) - 1].Cells[6].Text.ToString())
+            //                            && x.MinutoFinal == Convert.ToInt32(GvTarifas.Rows[Convert.ToInt32(Session["Index"]) - 1].Cells[5].Text.ToString())).ToList();
+
+            //    //LstTarifaPAnt = new List<WsPA.Tarifas>();
+            //    //LstTarifaPAnt = (List<WsPA.Tarifas>)Session["LstTarifaPAnt"];
+            //}                
         }
 
         protected void BtnAsigna_Click(object sender, EventArgs e)
         {
-            if(GvTarifas.Rows.Count > 0)
+            if (GvTarifas.Rows.Count > 0)
             {
-                if(BtnAgregar.Text.Contains("Agregar"))
-                {
-                    int minFAnt = 0;
-                    double totAcuAnt = 0;
-                    minFAnt = Convert.ToInt32(GvTarifas.Rows[GvTarifas.Rows.Count - 1].Cells[5].Text.ToString());
-                    totAcuAnt = Convert.ToDouble(GvTarifas.Rows[GvTarifas.Rows.Count - 1].Cells[6].Text.ToString());
-
-                    TxtMinI.Text = (minFAnt + 1).ToString();
-                    TxtMinF.Text = (minFAnt + Convert.ToInt32(TxtMinutos.Text)).ToString();
-                    TxtTotalA.Text = (totAcuAnt + Convert.ToInt32(txtImporte.Text)).ToString();
-                }
+                //if(GvTarifas.Rows[GvTarifas.Rows.Count - 1].Cells[1].Text.ToString() == txtCveTarifa.Text)
+                //{
+                int minFAnt = 0;
+                double totAcuAnt = 0;
+                int indice = 0;
+                if (Convert.ToInt32(Session["Index"]) == 0)
+                    indice = Convert.ToInt32(Session["Index"]);
                 else
+                    indice = Convert.ToInt32(Session["Index"]) - 1;
+                
+                if(Convert.ToInt32(Session["Index"]) == 0)
                 {
                     TxtMinI.Text = "0";
                     TxtMinF.Text = TxtMinutos.Text;
                     TxtTotalA.Text = txtImporte.Text;
-                }                
+                }
+                else
+                {
+                    minFAnt = Convert.ToInt32(GvTarifas.Rows[indice].Cells[5].Text.ToString());
+                    totAcuAnt = Convert.ToDouble(GvTarifas.Rows[indice].Cells[6].Text.ToString());
+                    TxtMinI.Text = (minFAnt + 1).ToString();
+                    TxtMinF.Text = (minFAnt + Convert.ToInt32(TxtMinutos.Text)).ToString();
+                    TxtTotalA.Text = (totAcuAnt + Convert.ToInt32(txtImporte.Text)).ToString();
+                }
+                
+                //}
+                //else
+                //{
+                //    TxtMinI.Text = "0";
+                //    TxtMinF.Text = TxtMinutos.Text;
+                //    TxtTotalA.Text = txtImporte.Text;
+                //}                
             }
             else
             {
                 TxtMinI.Text = "0";
                 TxtMinF.Text = TxtMinutos.Text;
                 TxtTotalA.Text = txtImporte.Text;
-            }   
+            }
         }
     }
 }

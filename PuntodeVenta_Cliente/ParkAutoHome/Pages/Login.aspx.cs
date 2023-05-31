@@ -20,7 +20,8 @@ namespace ParkAutoHome.Pages
         {
             if (!IsPostBack)
             {
-               
+               txtusuario.Style["text-align"] = "center";
+               txtpass.Style["text-align"] = "center";
             }
 
         }
