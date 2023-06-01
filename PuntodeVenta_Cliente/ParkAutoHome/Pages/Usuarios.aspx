@@ -12,7 +12,7 @@
     <div class="jumbotron">
         <h2>Usuarios</h2>
         <p class="lead"><span style="color: rgb(85, 85, 85); font-family: &quot; helvetica neue&quot; , helvetica, arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Activacion de Usuarios</span></p>
-        <uc1:WucSesion runat="server" id="WucSesion" />
+        <%--<uc1:WucSesion runat="server" id="WucSesion" />--%>
         <asp:UpdatePanel runat="server" ID="UpdatePanel2"
             UpdateMode="Conditional">
             <ContentTemplate>
@@ -127,7 +127,8 @@
                             <asp:Button ID="btnNuevo" runat="server" class="btn btn-primary btn-lg" Height="43px" OnClick="Button2_Click" Text="Nuevo" Width="112px" />
                         </div>
                         <div class="col-md-2">
-                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" Height="43px" OnClick="btnEditar_Click" Width="114px" class="btn btn-primary btn-lg" />
+                            <%--<asp:Button ID="btnGuardar" runat="server" Text="Guardar" Height="43px" OnClick="btnEditar_Click" Width="114px" class="btn btn-primary btn-lg" />--%>
+                            <asp:Button ID="btnGuardar" Text="Guardar"  runat="server"  OnClick="btnAceptar_Click" OnClientClick="verproc();" AutoPostBack="true" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
                         </div>
                         <div class="col-md-2">
                             <asp:Button ID="btnEditar" runat="server" Height="43px" Text="Editar" Width="116px" OnClick="Button1_Click" class="btn btn-primary btn-lg" />
@@ -142,6 +143,7 @@
                         </div>
                     </div>
                 </div>
+                <asp:HiddenField id="Valida" runat="server" Value="0"/>
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>

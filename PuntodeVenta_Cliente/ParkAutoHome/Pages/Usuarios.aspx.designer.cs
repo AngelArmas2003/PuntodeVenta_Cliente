@@ -15,15 +15,6 @@ namespace ParkAutoHome.Pages
     {
 
         /// <summary>
-        /// Control WucSesion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::ParkAutoHome.Controles.WucSesion WucSesion;
-
-        /// <summary>
         /// Control UpdatePanel2.
         /// </summary>
         /// <remarks>
@@ -238,5 +229,14 @@ namespace ParkAutoHome.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::ParkAutoHome.Controles.Notificacion Notificacion;
+
+        /// <summary>
+        /// Control Valida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Valida;
     }
 }

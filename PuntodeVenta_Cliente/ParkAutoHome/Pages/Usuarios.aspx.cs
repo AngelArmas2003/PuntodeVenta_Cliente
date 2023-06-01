@@ -18,9 +18,16 @@ namespace ParkAutoHome.Pages
         {
             //MaintainScrollPositionOnPostBack = true;
             if (!IsPostBack)
-            {                
+            {
                 fillgrilla();
                 Inicio();
+            }
+            else
+            {
+                if (Valida.Value == "1")
+                {
+                    btnEditar_Click(sender, e);
+                }
             }
         }
 
@@ -87,12 +94,12 @@ namespace ParkAutoHome.Pages
 
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
-       
+
             btnEditar.Enabled = false;
 
             txtConfirmar.Enabled = true;
 
-            
+
 
         }
 
@@ -135,8 +142,8 @@ namespace ParkAutoHome.Pages
             btnEditar.Enabled = false;
 
             this.txtid.Text = "";
-            this.txtnombre.Text ="";
-            this.txtusuario.Text  = "";
+            this.txtnombre.Text = "";
+            this.txtusuario.Text = "";
             this.txtcontraseña.Text = "";
             this.ckEstatus.Checked = false;
             this.txtConfirmar.Text = "";
@@ -151,38 +158,14 @@ namespace ParkAutoHome.Pages
                 osu.Nombre = txtnombre.Text;
                 osu.Usuario = txtusuario.Text;
                 osu.Contraseña = txtcontraseña.Text;
-                if (txtnombre.Text == string.Empty || txtusuario.Text == string.Empty || txtcontraseña.Text == string.Empty || txtcontraseña.Text == string.Empty)
-                {
-                    Notificacion.VerMensaje("Capture todos los campos.", 2);
-                }
-                else
-                {
-                    var Passok = ValidaContraseña(txtConfirmar.Text, osu.Contraseña);
-                    if (Passok)
-                    {
-                        string contra = Encripta(osu.Contraseña);
-                        var totusaurio = client.ValidaUsuarios2(osu.Usuario);
-                        if (totusaurio >= 1)
-                        {                            
-                            Notificacion.VerMensaje("El usuario ya se encuentra registrado.", 2);
-                        }
-                        else
-                        {
-                            string ResponseJson = JsonConvert.SerializeObject(osu);
-                            var c = client.UserNew(ResponseJson);
-                            fillgrilla();                            
-                            Inicio();
-                            Notificacion.VerMensaje("Usuario registrado.", 1);
-                        }
-                    }
-                    else
-                    {
-                        Notificacion.VerMensaje("Verifique el Password, debe ser identica en la confirmación.", 2);
-                    }
-                }
+
+                string ResponseJson = JsonConvert.SerializeObject(osu);
+                var c = client.UserNew(ResponseJson);
+                fillgrilla();
+                Inicio();
+                Notificacion.VerMensaje("Usuario registrado.", 1);
+                Valida.Value = "0";
             }
-
-
             if (btnGuardar.Text.Contains("Actualizar"))
             {
                 WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
@@ -193,37 +176,13 @@ namespace ParkAutoHome.Pages
                 osu.Contraseña = txtcontraseña.Text;
                 osu.Activo = ckEstatus.Checked;
                 var totusaurio = client.ValidaUsuarios(osu.Usuario, Encripta(osu.Contraseña));
-
-                if (txtnombre.Text == string.Empty || txtusuario.Text == string.Empty || txtcontraseña.Text == string.Empty || txtcontraseña.Text == string.Empty)
-                {                    
-                    Notificacion.VerMensaje("Capture todos los campos.", 2);
-                }
-                else
-                {
-                    var Passok = ValidaContraseña(txtConfirmar.Text, osu.Contraseña);
-
-                    if (Passok)
-                    {
-                        if (totusaurio >= 1)
-                        {                            
-                            Notificacion.VerMensaje("El Usuario ya se encuentra registrado.", 2);
-                        }
-                        else
-                        {
-                            string ResponseJson = JsonConvert.SerializeObject(osu);
-                            var c = client.UpdaterNew(ResponseJson);
-                            fillgrilla();                            
-                            Notificacion.VerMensaje("Usuario actualizado.", 1);
-                            Inicio();
-                        }
-                    }
-                    else
-                    {
-                        Notificacion.VerMensaje("Verifique el password, debe ser identica en la confirmación.", 2);
-                    }
-                }
+                string ResponseJson = JsonConvert.SerializeObject(osu);
+                var c = client.UpdaterNew(ResponseJson);
+                fillgrilla();
+                Notificacion.VerMensaje("Usuario actualizado.", 1);
+                Valida.Value = "0";
+                Inicio();
             }
-
         }
 
 
@@ -250,10 +209,10 @@ namespace ParkAutoHome.Pages
 
         public string Encripta(string Cadena)
         {
-              byte[] Clave = Encoding.ASCII.GetBytes("Tu Clave");
-         byte[] IV = Encoding.ASCII.GetBytes("Devjoker7.37hAES");
+            byte[] Clave = Encoding.ASCII.GetBytes("Tu Clave");
+            byte[] IV = Encoding.ASCII.GetBytes("Devjoker7.37hAES");
 
-        byte[] inputBytes = Encoding.ASCII.GetBytes(Cadena);
+            byte[] inputBytes = Encoding.ASCII.GetBytes(Cadena);
             byte[] encripted;
             RijndaelManaged cripto = new RijndaelManaged();
             using (MemoryStream ms = new MemoryStream(inputBytes.Length))
@@ -279,6 +238,85 @@ namespace ParkAutoHome.Pages
             TxtBUsuario.Text = string.Empty;
             TxtBNombre.Text = string.Empty;
             fillgrilla();
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (btnGuardar.Text.Contains("Guardar"))
+            {
+                WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                Users osu = new Users();
+                osu.Nombre = txtnombre.Text;
+                osu.Usuario = txtusuario.Text;
+                osu.Contraseña = txtcontraseña.Text;
+                if (txtnombre.Text == string.Empty || txtusuario.Text == string.Empty || txtcontraseña.Text == string.Empty || txtcontraseña.Text == string.Empty)
+                {
+                    Notificacion.VerMensaje("Capture todos los campos.", 2);
+                }
+                else
+                {
+                    var Passok = ValidaContraseña(txtConfirmar.Text, osu.Contraseña);
+                    if (Passok)
+                    {
+                        string contra = Encripta(osu.Contraseña);
+                        var totusaurio = client.ValidaUsuarios2(osu.Usuario);
+                        if (totusaurio >= 1)
+                        {
+                            Notificacion.VerMensaje("El usuario ya se encuentra registrado.", 2);
+                        }
+                        else
+                        {
+                            Valida.Value = "1";
+                            string varmensaje = string.Format("verMsgPregunta('{0}');", "¿Están correctos todos sus datos?");
+                            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", varmensaje, true);
+                        }
+                    }
+                    else
+                    {
+                        Notificacion.VerMensaje("Verifique el Password, debe ser identica en la confirmación.", 2);
+                    }
+                }
+            }
+            if (btnGuardar.Text.Contains("Actualizar"))
+            {
+                WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                Users osu = new Users();
+                osu.id = txtid.Text;
+                osu.Nombre = txtnombre.Text;
+                osu.Usuario = txtusuario.Text;
+                osu.Contraseña = txtcontraseña.Text;
+                osu.Activo = ckEstatus.Checked;
+                var totusaurio = client.ValidaUsuarios(osu.Usuario, Encripta(osu.Contraseña));
+
+                if (txtnombre.Text == string.Empty || txtusuario.Text == string.Empty || txtcontraseña.Text == string.Empty || txtcontraseña.Text == string.Empty)
+                {
+                    Notificacion.VerMensaje("Capture todos los campos.", 2);
+                }
+                else
+                {
+                    var Passok = ValidaContraseña(txtConfirmar.Text, osu.Contraseña);
+
+                    if (Passok)
+                    {
+                        if (totusaurio >= 1)
+                        {
+                            Notificacion.VerMensaje("El Usuario ya se encuentra registrado.", 2);
+                        }
+                        else
+                        {
+                            Valida.Value = "1";
+                            string varmensaje = string.Format("verMsgPregunta('{0}');", "¿Están correctos todos sus datos?");
+                            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", varmensaje, true);
+                        }
+                    }
+                    else
+                    {
+                        Notificacion.VerMensaje("Verifique el password, debe ser identica en la confirmación.", 2);
+                    }
+                }
+            }
+
+
         }
     }
 
