@@ -8,22 +8,24 @@
         <h2>Empresas</h2>
         <p class="lead"><span style="color: rgb(85, 85, 85); font-family: &quot; helvetica neue&quot; , helvetica, arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Alta de Empresas</span></p>
 
-        <div class="row" style="margin: 3px; border: double;">
-            <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
-                <label>Nombre:</label>
-                <asp:TextBox ID="TxtBNombre" runat="server" CssClass="form-control" />
+        <asp:Panel runat="server" DefaultButton="BtnBusqueda">
+            <div class="row" style="margin: 3px; border: double;">
+                <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
+                    <label>Nombre:</label>
+                    <asp:TextBox ID="TxtBNombre" runat="server" CssClass="form-control" />
+                </div>
+                <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                    <label>RFC:</label>
+                    <asp:TextBox ID="TxtBRFC" runat="server" CssClass="form-control" />
+                </div>
+                <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
+                    <asp:Button ID="BtnBusqueda" runat="server" class="btn btn-primary btn-md" Text="Filtrar búsqueda" OnClick="BtnBusqueda_Click" />
+                </div>
+                <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                    <asp:Button ID="BtnLimpiar" runat="server" class="btn btn-primary btn-md" Text="Limpiar" OnClick="BtnLimpiar_Click" />
+                </div>
             </div>
-            <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                <label>RFC:</label>
-                <asp:TextBox ID="TxtBRFC" runat="server" CssClass="form-control" />
-            </div>
-            <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
-                <asp:Button ID="BtnBusqueda" runat="server" class="btn btn-primary btn-md" Text="Filtrar búsqueda" OnClick="BtnBusqueda_Click" />
-            </div>
-            <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                <asp:Button ID="BtnLimpiar" runat="server" class="btn btn-primary btn-md" Text="Limpiar" OnClick="BtnLimpiar_Click" />
-            </div>
-        </div>
+        </asp:Panel>
         <br />
         <asp:UpdatePanel runat="server" ID="UpdatePanel2" UpdateMode="Conditional">
             <ContentTemplate>

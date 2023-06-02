@@ -55,6 +55,7 @@ namespace ParkAutoHome.Pages
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
+            WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
             if (txtEstamto.Text == "")
             {
                 Notificacion.VerMensaje("Captute el nombre del estacionamiento.", 2);
@@ -63,13 +64,22 @@ namespace ParkAutoHome.Pages
             {
                 if (btnGuardar.Text.Contains("Guardar"))
                 {
-                    WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                    WsPA.Estamtos ent = new WsPA.Estamtos();
+                    ent.NombreEstamto = txtEstamto.Text;
+                    ent.NombreEmpresa = "";
+                    if (client.CatalogEstamtos(ent).Count() > 0)
+                    {
+                        Notificacion.VerMensaje("El estacionamiento ya se encutra registrado.", 2);
+                        return;
+                    }
+
+                    client = new WsPA.WSPanelControlSoapClient();
                     Estamtos oesta = new Estamtos();
                     oesta.CveEmpresa = ddlEmpresa.SelectedValue;
                     oesta.NombreEstamto = txtEstamto.Text.ToUpper();
                     string ResponseJson = JsonConvert.SerializeObject(oesta);
                     var c = client.NewEstamto(ResponseJson);
-                    Notificacion.VerMensaje("Estacionamiento registrado.", 2);
+                    Notificacion.VerMensaje("Estacionamiento registrado.", 1);
                     CargarEmpresaCombo();
                     fillgrilla();
                     Inicio();
@@ -77,7 +87,7 @@ namespace ParkAutoHome.Pages
 
                 if (btnGuardar.Text.Contains("Actualizar"))
                 {
-                    WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                    client = new WsPA.WSPanelControlSoapClient();
                     Estamtos oesta = new Estamtos();
                     oesta.CveEstamto = (string)(Session["CveEstamto"]);
                     oesta.NombreEstamto = txtEstamto.Text.ToUpper();

@@ -157,8 +157,7 @@ namespace ParkAutoHome.Pages
                 Users osu = new Users();
                 osu.Nombre = txtnombre.Text;
                 osu.Usuario = txtusuario.Text;
-                osu.Contraseña = txtcontraseña.Text;
-
+                osu.Contraseña = ViewState["pw"].ToString();
                 string ResponseJson = JsonConvert.SerializeObject(osu);
                 var c = client.UserNew(ResponseJson);
                 fillgrilla();
@@ -173,7 +172,7 @@ namespace ParkAutoHome.Pages
                 osu.id = txtid.Text;
                 osu.Nombre = txtnombre.Text;
                 osu.Usuario = txtusuario.Text;
-                osu.Contraseña = txtcontraseña.Text;
+                osu.Contraseña = ViewState["pw"].ToString();
                 osu.Activo = ckEstatus.Checked;
                 var totusaurio = client.ValidaUsuarios(osu.Usuario, Encripta(osu.Contraseña));
                 string ResponseJson = JsonConvert.SerializeObject(osu);
@@ -248,7 +247,8 @@ namespace ParkAutoHome.Pages
                 Users osu = new Users();
                 osu.Nombre = txtnombre.Text;
                 osu.Usuario = txtusuario.Text;
-                osu.Contraseña = txtcontraseña.Text;
+                osu.Contraseña = txtcontraseña.Text ;
+                ViewState["pw"] = osu.Contraseña;
                 if (txtnombre.Text == string.Empty || txtusuario.Text == string.Empty || txtcontraseña.Text == string.Empty || txtcontraseña.Text == string.Empty)
                 {
                     Notificacion.VerMensaje("Capture todos los campos.", 2);
@@ -285,6 +285,7 @@ namespace ParkAutoHome.Pages
                 osu.Nombre = txtnombre.Text;
                 osu.Usuario = txtusuario.Text;
                 osu.Contraseña = txtcontraseña.Text;
+                ViewState["pw"] = osu.Contraseña;
                 osu.Activo = ckEstatus.Checked;
                 var totusaurio = client.ValidaUsuarios(osu.Usuario, Encripta(osu.Contraseña));
 

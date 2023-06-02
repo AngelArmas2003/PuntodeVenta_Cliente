@@ -9,22 +9,24 @@
             <div class="jumbotron">
                 <h2>Plazas y Determinantes</h2>
                 <p class="lead"><span style="color: rgb(85, 85, 85); font-family: &quot; helvetica neue&quot; , helvetica, arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: uppercase; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(232, 239, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Activación de Plazas y Determinantes</span></p>
-                <div class="row" style="margin: 3px; border: double;">
-                    <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
-                        <label>Empresa:</label>
-                        <asp:TextBox ID="TxtBEmpresa" runat="server" CssClass="form-control" class="form-control CajaTexto" />
+                <asp:Panel runat="server" DefaultButton="BtnBusqueda">
+                    <div class="row" style="margin: 3px; border: double;">
+                        <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
+                            <label>Empresa:</label>
+                            <asp:TextBox ID="TxtBEmpresa" runat="server" CssClass="form-control" class="form-control CajaTexto" />
+                        </div>
+                        <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                            <label>Estacionamiento:</label>
+                            <asp:TextBox ID="TxtBEstacionamiento" runat="server" CssClass="form-control" class="form-control CajaTexto" />
+                        </div>
+                        <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
+                            <asp:Button ID="BtnBusqueda" runat="server" class="btn btn-primary btn-md" Text="Filtrar búsqueda" OnClick="BtnBusqueda_Click" />
+                        </div>
+                        <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
+                            <asp:Button ID="BtnLimpiar" runat="server" class="btn btn-primary btn-md" Text="Limpiar" OnClick="BtnLimpiar_Click" />
+                        </div>
                     </div>
-                    <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                        <label>Estacionamiento:</label>
-                        <asp:TextBox ID="TxtBEstacionamiento" runat="server" CssClass="form-control" class="form-control CajaTexto" />
-                    </div>
-                    <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
-                        <asp:Button ID="BtnBusqueda" runat="server" class="btn btn-primary btn-md" Text="Filtrar búsqueda" OnClick="BtnBusqueda_Click" />
-                    </div>
-                    <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                        <asp:Button ID="BtnLimpiar" runat="server" class="btn btn-primary btn-md" Text="Limpiar" OnClick="BtnLimpiar_Click" />
-                    </div>
-                </div>
+                </asp:Panel>
                 <br />
                 <asp:GridView ID="GvDeterminantes" runat="server" AllowPaging="True"
                     AutoGenerateColumns="false" OnPageIndexChanging="GvDeterminantes_PageIndexChanging"
@@ -44,7 +46,7 @@
                             <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor="Blue" ForeColor="White" Width="50" />
                             <ItemStyle Font-Names="Arial" Font-Size="Smaller" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Nombre_Empresa" HeaderText="Nombre_Empresa">
+                        <asp:BoundField DataField="Nombre_Empresa" HeaderText="Nombre Empresa">
                             <HeaderStyle Font-Names="Arial" Font-Size="Smaller" BackColor="Blue" ForeColor="White" Width="450" />
                             <ItemStyle Font-Names="Arial" Font-Size="Smaller" />
                         </asp:BoundField>
@@ -79,7 +81,7 @@
                             <asp:Label ID="Proveedor" runat="server" Text="Codigo Proveedor"></asp:Label>
                         </div>
                         <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:TextBox ID="txtProveedor" runat="server" MaxLength="2" onkeydown = "return (!(event.keyCode>=65) && event.keyCode!=32)"  Width="68px" class="form-control CajaTexto"></asp:TextBox>
+                            <asp:TextBox ID="txtProveedor" runat="server" MaxLength="2" onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)" Width="68px" class="form-control CajaTexto"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -103,7 +105,7 @@
                             <asp:Label ID="Label3" runat="server" Text="Determinante"></asp:Label>
                         </div>
                         <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:TextBox ID="txtDeterminante" runat="server" MaxLength="4" onkeydown = "return (!(event.keyCode>=65) && event.keyCode!=32)" Width="68px" Style="text-transform: uppercase" class="form-control CajaTexto"></asp:TextBox>
+                            <asp:TextBox ID="txtDeterminante" runat="server" MaxLength="4" onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)" Width="68px" Style="text-transform: uppercase" class="form-control CajaTexto"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
