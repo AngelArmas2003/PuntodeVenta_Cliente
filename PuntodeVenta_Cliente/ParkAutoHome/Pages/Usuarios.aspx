@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site3.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="ParkAutoHome.Pages.Usuarios" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <%--smartNavigation="True"
     MaintainScrollPositionOnPostback="true"--%>
 
@@ -20,7 +22,7 @@
                     <div class="row" style="margin: 3px; border: double;">
                         <div class="col-md-3" style="display: flex; justify-content: right; padding: 10px;">
                             <label>Nombre:</label>
-                            <asp:TextBox ID="TxtBNombre" runat="server" CssClass="form-control"/>
+                            <asp:TextBox ID="TxtBNombre" runat="server" CssClass="form-control" />
                         </div>
                         <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
                             <label>Usuario:</label>
@@ -129,7 +131,7 @@
                         </div>
                         <div class="col-md-2">
                             <%--<asp:Button ID="btnGuardar" runat="server" Text="Guardar" Height="43px" OnClick="btnEditar_Click" Width="114px" class="btn btn-primary btn-lg" />--%>
-                            <asp:Button ID="btnGuardar" Text="Guardar" runat="server" OnClick="btnAceptar_Click" OnClientClick="verproc();" AutoPostBack="true" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                            <asp:Button ID="btnGuardar" Text="Guardar" runat="server" OnClick="btnAceptar_Click" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
                         </div>
                         <div class="col-md-2">
                             <asp:Button ID="btnEditar" runat="server" Height="43px" Text="Editar" Width="116px" OnClick="Button1_Click" class="btn btn-primary btn-lg" />
@@ -139,12 +141,61 @@
                         </div>
                     </div>
                     <div class="row">
+                        <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
+                        <asp:ModalPopupExtender ID="ModalMsj" runat="server" PopupControlID="PnlMsj"
+                            Enabled="True" DropShadow="true"
+                            BackgroundCssClass="modalBackground" TargetControlID="btnShowPopup">
+                        </asp:ModalPopupExtender>
+                        <asp:Panel ID="PnlMsj" runat="server" CssClass="modalPopup" align="center" Style="display: none">
+                            <div class="row">
+                                <div class="col-md-11" style="display: flex; justify-content: center; padding: 10px;">
+                                    <p class="lead">
+                                        <span>¿Están correctos todos los datos?</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
+                                    <asp:Button ID="BtnCloseM" Text="Cancelar" runat="server" OnClick="BtnCloseM_Click" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
+                                        <asp:Button ID="BtnContinuar" Text="Continuar" runat="server" OnClick="btnEditar_Click" OnClientClick="SetClientRefresh()" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                    </div>
+                                </div>
+                        </asp:Panel>
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="Button2" runat="server" Style="display: none" />
+                        <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" PopupControlID="PnlMsj"
+                            Enabled="True" DropShadow="true"
+                            BackgroundCssClass="modalBackground" TargetControlID="btnShowPopup">
+                        </asp:ModalPopupExtender>
+                        <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" Style="display: none">
+                            <div class="row">
+                                <div class="col-md-11" style="display: flex; justify-content: center; padding: 10px;">
+                                    <p class="lead">
+                                        <span>¿Están correctos todos los datos?</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
+                                    <asp:Button ID="Button3" Text="Cancelar" runat="server" OnClick="BtnCloseM_Click" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
+                                        <asp:Button ID="Button4" Text="Continuar" runat="server" OnClick="btnEditar_Click" OnClientClick="SetClientRefresh()" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                    </div>
+                                </div>
+                        </asp:Panel>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-12" style="text-align: center; padding: 20px">
                             <uc1:Notificacion runat="server" ID="Notificacion" />
                         </div>
                     </div>
                 </div>
-                <asp:HiddenField ID="Valida" runat="server" Value="0" />
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>

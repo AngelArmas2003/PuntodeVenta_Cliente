@@ -35,7 +35,6 @@ namespace ParkAutoHome.Pages
 
         protected void GVEmpresas_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             Session["Idempresa"] = GVEmpresas.SelectedRow.Cells[0].Text;
             this.txtnomEmpresa.Text = GVEmpresas.SelectedRow.Cells[1].Text;
             this.txtrfc.Text = GVEmpresas.SelectedRow.Cells[2].Text;
@@ -61,68 +60,33 @@ namespace ParkAutoHome.Pages
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            if (txtnomEmpresa.Text == "" || txtrfc.Text == "")
+            if (btnGuardar.Text.Contains("Guardar"))
             {
-                Notificacion.VerMensaje("Capture todos los campos.", 2);
+                WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                Empresa oemp = new Empresa();
+                oemp.NombreEmpresa = txtnomEmpresa.Text.ToUpper();
+                oemp.Rfc = txtrfc.Text.ToUpper();
+                string ResponseJson = JsonConvert.SerializeObject(oemp);
+                var c = client.NewEmpresa(ResponseJson);
+                Notificacion.VerMensaje("Empresa registrada.", 1);
+                fillgrilla();
+                Inicio();
             }
-            else
+            if (btnGuardar.Text.Contains("Actualizar"))
             {
-                if (btnGuardar.Text.Contains("Guardar"))
-                {
-                    Tools ot = new Tools();
-                    var resp = ot.rfc_Validacion(txtrfc.Text);
-                    if (!resp)
-                    {
-                        Notificacion.VerMensaje("RFC Invalido.", 2);
-                    }
-                    else
-                    {
-                        WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-                        var ValRfc = client.ValidaEmpresa(txtrfc.Text);
-                        if (ValRfc >= 1)
-                        {
-                            Notificacion.VerMensaje("El RFC ya esta registrado.", 2);
-                        }
-                        else
-                        {
-                            Empresa oemp = new Empresa();
-                            oemp.NombreEmpresa = txtnomEmpresa.Text.ToUpper();
-                            oemp.Rfc = txtrfc.Text.ToUpper();
-                            string ResponseJson = JsonConvert.SerializeObject(oemp);
-                            var c = client.NewEmpresa(ResponseJson);
-                            Notificacion.VerMensaje("Empresa registrada.", 1);
-                            fillgrilla();
-                            Inicio();
-                        }
-                    }
-                }
-
-                if (btnGuardar.Text.Contains("Actualizar"))
-                {
-                    Tools ot = new Tools();
-                    var resp = ot.rfc_Validacion(txtrfc.Text);
-                    if (!resp)
-                    {
-                        Notificacion.VerMensaje("RFC Invalido.", 1);
-                    }
-                    else
-                    {
-                        WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-                        Empresa oemp = new Empresa();
-                        oemp.idEmpresa = (string)(Session["Idempresa"]);
-                        oemp.NombreEmpresa = txtnomEmpresa.Text.ToUpper();
-                        oemp.Rfc = txtrfc.Text.ToUpper();
-                        string ResponseJson = JsonConvert.SerializeObject(oemp);
-                        var c = client.UpdaterEmpresa(ResponseJson);
-                        Notificacion.VerMensaje("Empresa Actualizada.", 1);
-                        Session["Idempresa"] = "";
-                        fillgrilla();
-                        Inicio();
-                    }
-                }
+                WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                Empresa oemp = new Empresa();
+                oemp.idEmpresa = (string)(Session["Idempresa"]);
+                oemp.NombreEmpresa = txtnomEmpresa.Text.ToUpper();
+                oemp.Rfc = txtrfc.Text.ToUpper();
+                string ResponseJson = JsonConvert.SerializeObject(oemp);
+                var c = client.UpdaterEmpresa(ResponseJson);
+                Notificacion.VerMensaje("Empresa actualizada.", 1);
+                Session["Idempresa"] = "";
+                fillgrilla();
+                Inicio();
             }
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             txtnomEmpresa.Enabled = true;
@@ -144,7 +108,6 @@ namespace ParkAutoHome.Pages
             WsPA.Empresas entEmp = new WsPA.Empresas();
             entEmp.NombreEmpresa = TxtBNombre.Text;
             entEmp.Rfc = TxtBRFC.Text;
-
             GVEmpresas.DataSource = client.CatalogEmpresa(entEmp);
             GVEmpresas.DataBind();
             txtnomEmpresa.Enabled = false;
@@ -175,6 +138,55 @@ namespace ParkAutoHome.Pages
             TxtBNombre.Text = string.Empty;
             fillgrilla();
         }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (txtnomEmpresa.Text == "" || txtrfc.Text == "")
+            {
+                Notificacion.VerMensaje("Capture todos los campos.", 2);
+            }
+            else
+            {
+                if (btnGuardar.Text.Contains("Guardar"))
+                {
+                    Tools ot = new Tools();
+                    var resp = ot.rfc_Validacion(txtrfc.Text);
+                    if (!resp)
+                    {
+                        Notificacion.VerMensaje("RFC invalido.", 2);
+                    }
+                    else
+                    {
+                        WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                        var ValRfc = client.ValidaEmpresa(txtrfc.Text);
+                        if (ValRfc >= 1)
+                        {
+                            Notificacion.VerMensaje("El RFC ya esta registrado.", 2);
+                        }
+                        else
+                        {
+                            ModalMsj.Show();
+                        }
+                    }
+                }
 
+                if (btnGuardar.Text.Contains("Actualizar"))
+                {
+                    Tools ot = new Tools();
+                    var resp = ot.rfc_Validacion(txtrfc.Text);
+                    if (!resp)
+                    {
+                        Notificacion.VerMensaje("RFC Invalido.", 2);
+                    }
+                    else
+                    {
+                        ModalMsj.Show();
+                    }
+                }
+            }
+        }
+        protected void BtnCloseM_Click(object sender, EventArgs e)
+        {
+            ModalMsj.Hide();
+        }
     }
 }

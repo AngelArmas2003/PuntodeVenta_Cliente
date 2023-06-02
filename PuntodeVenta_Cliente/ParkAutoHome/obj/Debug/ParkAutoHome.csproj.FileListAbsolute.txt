@@ -128,6 +128,7 @@ C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\roslyn
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\roslyn\vbc.rsp
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\roslyn\VBCSCompiler.exe
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\roslyn\VBCSCompiler.exe.config
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\AjaxControlToolkit.dll
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\Antlr3.Runtime.dll
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ParkAutoHome\bin\AspNet.ScriptManager.jQuery.dll

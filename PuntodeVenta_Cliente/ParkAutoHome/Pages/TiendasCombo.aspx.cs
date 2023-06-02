@@ -57,21 +57,6 @@ namespace ParkAutoHome.Pages
         {
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
             WsPA.ComboDeterminantes ent = new WsPA.ComboDeterminantes();
-            ent.NumeroCombo = "";
-            ent.Determinante = ddlDeterminante.SelectedValue;
-            WsPA.ComboDeterminantes[] lst =  client.CatalogoCombosdeterminantes(ent);
-            List<WsPA.ComboDeterminantes> lstC = new List<WsPA.ComboDeterminantes>(lst);
-            
-            if (lstC.Where(x => x.NumeroCombo != DdlCombo.SelectedValue).Count() > 0 )
-            {
-                foreach (var item in lstC.Where(x => x.NumeroCombo != DdlCombo.SelectedValue))
-                {
-                    Notificacion.VerMensaje("La determinante " + item.NombrePlaza + " ya se encuentra registrada en el número de combo " + item.NumeroCombo + ".", 2);
-                    break;
-                }
-            }
-            else
-            {
                 if (btnGuardar.Text.Contains("Guardar"))
                 {
                     client = new WsPA.WSPanelControlSoapClient();
@@ -117,8 +102,6 @@ namespace ParkAutoHome.Pages
                         ComboConsulta();
                     }
                 }
-            }
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -190,6 +173,30 @@ namespace ParkAutoHome.Pages
         protected void DdlCombo_TextChanged(object sender, EventArgs e)
         {
             ComboConsulta();
+        }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+            WsPA.ComboDeterminantes ent = new WsPA.ComboDeterminantes();
+            ent.NumeroCombo = "";
+            ent.Determinante = ddlDeterminante.SelectedValue;
+            WsPA.ComboDeterminantes[] lst = client.CatalogoCombosdeterminantes(ent);
+            List<WsPA.ComboDeterminantes> lstC = new List<WsPA.ComboDeterminantes>(lst);
+
+            if (lstC.Where(x => x.NumeroCombo != DdlCombo.SelectedValue).Count() > 0)
+            {
+                foreach (var item in lstC.Where(x => x.NumeroCombo != DdlCombo.SelectedValue))
+                {
+                    Notificacion.VerMensaje("La determinante " + item.NombrePlaza + " ya se encuentra registrada en el número de combo " + item.NumeroCombo + ".", 2);
+                    break;
+                }
+            }
+            else
+                ModalMsj.Show();
+        }
+        protected void BtnCloseM_Click(object sender, EventArgs e)
+        {
+            ModalMsj.Hide();
         }
     }
 }

@@ -69,14 +69,8 @@ namespace ParkAutoHome.Pages
         {
             try
             {
-                if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
-                {
-                    Notificacion.VerMensaje("Capture todos los campos.", 2);
-                    return;
-                }
                 WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
                 WsPA.Tarifas tarifa = new WsPA.Tarifas();
-
 
                 if (btnGuardar.Text.Contains("Guardar"))
                 {
@@ -147,8 +141,6 @@ namespace ParkAutoHome.Pages
                     Session["LstTarifa"] = "";
                     TarifasConsulta();
                     Inicio();
-                    //Session["Index"] = "";                    
-                    //Session["LstTarifaPAnt"] = "";
                     HdTotA.Value = "";
                 }
             }
@@ -228,8 +220,6 @@ namespace ParkAutoHome.Pages
                 LstTarifaP = new List<WsPA.Tarifas>();
                 LstTarifaP = entTR.ToList();
                 Session["LstTarifa"] = LstTarifaP.ToList();
-                //LstTarifaPAnt = entTR.ToList();
-                //Session["LstTarifaPAnt"] = LstTarifaPAnt.ToList();
                 GvTarifas.DataSource = LstTarifaP.ToList();
                 GvTarifas.DataBind();
             }
@@ -266,18 +256,7 @@ namespace ParkAutoHome.Pages
             txtImporte.Text = GvTarifas.SelectedRow.Cells[3].Text;
             TxtDeterminante.Text = GvTarifas.SelectedRow.Cells[7].Text;
             Session["Index"] = GvTarifas.SelectedIndex;
-            HdTotA.Value = GvTarifas.SelectedRow.Cells[6].Text;
-            //if (GvTarifas.SelectedIndex >= 1)
-            //{
-            //    LstTarifaPAnt = new List<WsPA.Tarifas>();
-            //    LstTarifaPAnt = (List<WsPA.Tarifas>)Session["LstTarifaPAnt"];
-            //    Session["LstTarifaPAnt"] = "";
-            //    Session["LstTarifaPAnt"] = LstTarifaPAnt.Where(x => x.TotalAcumulado == Convert.ToDouble(GvTarifas.Rows[Convert.ToInt32(Session["Index"]) - 1].Cells[6].Text.ToString())
-            //                            && x.MinutoFinal == Convert.ToInt32(GvTarifas.Rows[Convert.ToInt32(Session["Index"]) - 1].Cells[5].Text.ToString())).ToList();
-
-            //    //LstTarifaPAnt = new List<WsPA.Tarifas>();
-            //    //LstTarifaPAnt = (List<WsPA.Tarifas>)Session["LstTarifaPAnt"];
-            //}                
+            HdTotA.Value = GvTarifas.SelectedRow.Cells[6].Text;               
         }
 
         protected void BtnAsigna_Click(object sender, EventArgs e)
@@ -307,15 +286,7 @@ namespace ParkAutoHome.Pages
                     TxtMinI.Text = (minFAnt + 1).ToString();
                     TxtMinF.Text = (minFAnt + Convert.ToInt32(TxtMinutos.Text)).ToString();
                     TxtTotalA.Text = (totAcuAnt + Convert.ToInt32(txtImporte.Text)).ToString();
-                }
-                
-                //}
-                //else
-                //{
-                //    TxtMinI.Text = "0";
-                //    TxtMinF.Text = TxtMinutos.Text;
-                //    TxtTotalA.Text = txtImporte.Text;
-                //}                
+                }               
             }
             else
             {
@@ -323,6 +294,19 @@ namespace ParkAutoHome.Pages
                 TxtMinF.Text = TxtMinutos.Text;
                 TxtTotalA.Text = txtImporte.Text;
             }
+        }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
+            {
+                Notificacion.VerMensaje("Capture todos los campos.", 2);
+                return;
+            }
+            ModalMsj.Show();
+        }
+        protected void BtnCloseM_Click(object sender, EventArgs e)
+        {
+            ModalMsj.Hide();
         }
     }
 }

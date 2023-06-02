@@ -5,7 +5,6 @@ C:\Proyectos_2022\Cobos_Corsa_Walmart\PuntodeVenta_Cliente\PuntodeVenta_Cliente\
 C:\Proyectos_2022\Cobos_Corsa_Walmart\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ClassLibrary\obj\Debug\ClassLibrary.pdb
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ClassLibrary\bin\Debug\ClassLibrary.dll
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ClassLibrary\bin\Debug\ClassLibrary.pdb
-C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ClassLibrary\obj\Debug\ClassLibrary.dll
 C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\ClassLibrary\obj\Debug\ClassLibrary.pdb

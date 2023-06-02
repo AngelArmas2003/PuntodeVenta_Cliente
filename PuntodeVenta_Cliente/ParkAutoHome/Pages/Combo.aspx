@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site3.Master" AutoEventWireup="true" CodeBehind="Combo.aspx.cs" Inherits="ParkAutoHome.Pages.WebForm1" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="~/Controles/Notificacion.ascx" TagPrefix="uc1" TagName="Notificacion" %>
 <%@ Register Src="~/Controles/WucSesion.ascx" TagPrefix="uc1" TagName="WucSesion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -90,7 +91,7 @@
                             <asp:Button ID="btnNuevo" runat="server" Height="43px" Text="Nuevo" Width="112px" OnClick="Button2_Click" class="btn btn-primary btn-lg" />
                         </div>
                         <div class="col-md-2">
-                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" Height="43px" OnClick="btnEditar_Click" Width="114px" class="btn btn-primary btn-lg" />
+                            <asp:Button ID="btnGuardar" Text="Guardar" runat="server" OnClick="btnAceptar_Click" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
                         </div>
                         <div class="col-md-2">
                             <asp:Button ID="btnEditar" runat="server" Height="43px" Text="Editar" Width="116px" OnClick="Button1_Click" class="btn btn-primary btn-lg" />
@@ -98,6 +99,31 @@
                         <div class="col-md-2">
                             <asp:Button ID="Button1" runat="server" Height="43px" Text="Cancelar" Width="117px" OnClick="Button3_Click" class="btn btn-primary btn-lg" />
                         </div>
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
+                        <asp:ModalPopupExtender ID="ModalMsj" runat="server" PopupControlID="PnlMsj"
+                            Enabled="True" DropShadow="true"
+                            BackgroundCssClass="modalBackground" TargetControlID="btnShowPopup">
+                        </asp:ModalPopupExtender>
+                        <asp:Panel ID="PnlMsj" runat="server" CssClass="modalPopup" align="center" Style="display: none">
+                            <div class="row">
+                                <div class="col-md-11" style="display: flex; justify-content: center; padding: 10px;">
+                                    <p class="lead">
+                                        <span>¿Están correctos todos los datos?</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
+                                    <asp:Button ID="BtnCloseM" Text="Cancelar" runat="server" OnClick="BtnCloseM_Click" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
+                                        <asp:Button ID="BtnContinuar" Text="Continuar" runat="server" OnClick="btnEditar_Click" OnClientClick="SetClientRefresh()" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                    </div>
+                                </div>
+                        </asp:Panel>
                     </div>
                     <div class="row">
                         <div class="col-lg-12" style="text-align: center; padding: 20px">

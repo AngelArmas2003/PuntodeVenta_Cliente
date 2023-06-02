@@ -36,7 +36,7 @@ namespace ParkAutoHome.Pages
 
             this.txtProveedor.Text = GvDeterminantes.SelectedRow.Cells[1].Text;
             this.ddlEmpresa.Text = GvDeterminantes.SelectedRow.Cells[2].Text;
-            this.ddlEstamto.Text  = GvDeterminantes.SelectedRow.Cells[4].Text;
+            this.ddlEstamto.Text = GvDeterminantes.SelectedRow.Cells[4].Text;
             this.txtDeterminante.Text = GvDeterminantes.SelectedRow.Cells[6].Text;
             var dd = (GvDeterminantes.SelectedRow.Cells[7]).Text;
             this.ckEstatus.Checked = Convert.ToBoolean(dd);
@@ -63,78 +63,44 @@ namespace ParkAutoHome.Pages
             btnGuardar.Text = "Guardar";
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
-            btnEditar.Enabled = false;            
+            btnEditar.Enabled = false;
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            string prov = txtProveedor.Text;
-            string dete = txtDeterminante.Text;
-            if (prov == "" || dete == "")
-            {
-                Notificacion.VerMensaje("Capture todos los campos.", 2);
-            }
-            else
-            {
-                WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-                
-                if (btnGuardar.Text.Contains("Guardar"))
-                {
-                    WsPA.Determinantes entDet = new WsPA.Determinantes();
-                    entDet.CveEmpresa = "";
-                    entDet.Nombre_Empresa = "";
-                    entDet.CveEstamto = ddlEstamto.SelectedValue;
-                    entDet.Estacionamiento = "";
-                    WsPA.Determinantes[] entLDet = client.DeterminantesActivas(entDet);
-                    if(entLDet.Count() > 0)
-                    {
-                        if (entLDet[0].CveEmpresa != "" && entLDet[0].CveEstamto != "")
-                        {
-                            Notificacion.VerMensaje("El estacionamiento " + entLDet[0].Estacionamiento + " ya se encutra registrado en la empresa " + entLDet[0].Nombre_Empresa + ".", 2);
-                            return;
-                        }
-                    }
-                    
+            WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
 
-                    client = new WsPA.WSPanelControlSoapClient();
-                    Proveedor oPro = new Proveedor();
-                    oPro.Codigo_Proveedor = txtProveedor.Text;
-                    oPro.CveEmpresa = ddlEmpresa.SelectedValue;
-                    oPro.Determinante = txtDeterminante.Text;
-                    oPro.CveEstamto = ddlEstamto.SelectedValue;
-                    oPro.Activo = ckEstatus.Checked;
-                    string ResponseJson = JsonConvert.SerializeObject(oPro);
-                    var c = client.NewProveedor(ResponseJson);
-                    if (c== -1)
-                    {
-                        Notificacion.VerMensaje("La determinante ya existe.", 2);
-                    }
-                    else
-                    {
-                        Notificacion.VerMensaje("Determinante registrada.", 1);
-                    }
-                    fillgrilla();
-                    Inicio();
-                }
-                else if (btnGuardar.Text.Contains("Actualizar"))
-                {
-                    client = new WsPA.WSPanelControlSoapClient();
-                    Proveedor oPro = new Proveedor();
-                    oPro.id = (string)(Session["id"]);
-                    oPro.Codigo_Proveedor = txtProveedor.Text;
-                    oPro.CveEmpresa = ddlEmpresa.SelectedValue;
-                    oPro.Determinante = txtDeterminante.Text;
-                    oPro.CveEstamto = ddlEstamto.SelectedValue;
-                    oPro.Activo = ckEstatus.Checked;
-                    string ResponseJson = JsonConvert.SerializeObject(oPro);
-                    var c = client.UpdateProveedor(ResponseJson);
-                    Notificacion.VerMensaje("Determinante actualizada.", 1);
-                    fillgrilla();
-                    Inicio();
-                }
+            if (btnGuardar.Text.Contains("Guardar"))
+            {
+                WsPA.Determinantes entDet = new WsPA.Determinantes();                
+                client = new WsPA.WSPanelControlSoapClient();
+                Proveedor oPro = new Proveedor();
+                oPro.Codigo_Proveedor = txtProveedor.Text;
+                oPro.CveEmpresa = ddlEmpresa.SelectedValue;
+                oPro.Determinante = txtDeterminante.Text;
+                oPro.CveEstamto = ddlEstamto.SelectedValue;
+                oPro.Activo = ckEstatus.Checked;
+                string ResponseJson = JsonConvert.SerializeObject(oPro);
+                var c = client.NewProveedor(ResponseJson);
+                Notificacion.VerMensaje("Determinante registrada.", 1);
+            }
+            else if (btnGuardar.Text.Contains("Actualizar"))
+            {
+                client = new WsPA.WSPanelControlSoapClient();
+                Proveedor oPro = new Proveedor();
+                oPro.id = (string)(Session["id"]);
+                oPro.Codigo_Proveedor = txtProveedor.Text;
+                oPro.CveEmpresa = ddlEmpresa.SelectedValue;
+                oPro.Determinante = txtDeterminante.Text;
+                oPro.CveEstamto = ddlEstamto.SelectedValue;
+                oPro.Activo = ckEstatus.Checked;
+                string ResponseJson = JsonConvert.SerializeObject(oPro);
+                var c = client.UpdateProveedor(ResponseJson);
+                Notificacion.VerMensaje("Determinante actualizada.", 1);
+                fillgrilla();
+                Inicio();
             }
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             txtProveedor.Enabled = true;
@@ -146,8 +112,6 @@ namespace ParkAutoHome.Pages
             btnGuardar.Enabled = true;
             btnEditar.Enabled = false;
         }
-
-
         private void fillgrilla()
         {
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
@@ -217,12 +181,51 @@ namespace ParkAutoHome.Pages
         {
             fillgrilla();
         }
-
         protected void BtnLimpiar_Click(object sender, EventArgs e)
         {
             TxtBEmpresa.Text = string.Empty;
             TxtBEstacionamiento.Text = string.Empty;
             fillgrilla();
+        }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            string prov = txtProveedor.Text;
+            string dete = txtDeterminante.Text;
+            if (prov == "" || dete == "")
+            {
+                Notificacion.VerMensaje("Capture todos los campos.", 2);
+            }
+            else
+            {
+                WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+
+                if (btnGuardar.Text.Contains("Guardar"))
+                {
+                    WsPA.Determinantes entDet = new WsPA.Determinantes();
+                    entDet.CveEmpresa = "";
+                    entDet.Nombre_Empresa = "";
+                    entDet.CveEstamto = ddlEstamto.SelectedValue;
+                    entDet.Estacionamiento = "";
+                    WsPA.Determinantes[] entLDet = client.DeterminantesActivas(entDet);
+                    if (entLDet.Count() > 0)
+                    {
+                        if (entLDet[0].CveEmpresa != "" && entLDet[0].CveEstamto != "")
+                        {
+                            Notificacion.VerMensaje("El estacionamiento " + entLDet[0].Estacionamiento + " ya se encutra registrado en la empresa " + entLDet[0].Nombre_Empresa + ".", 2);
+                            return;
+                        }
+                    }
+                    ModalMsj.Show();
+                }
+                else if (btnGuardar.Text.Contains("Actualizar"))
+                {
+                    ModalMsj.Show();
+                }
+            }
+        }
+        protected void BtnCloseM_Click(object sender, EventArgs e)
+        {
+            ModalMsj.Hide();
         }
     }
 }

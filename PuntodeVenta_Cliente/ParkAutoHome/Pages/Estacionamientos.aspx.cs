@@ -17,7 +17,7 @@ namespace ParkAutoHome.Pages
             {
                 fillgrilla();
                 Inicio();
-                CargarEmpresaCombo();                
+                CargarEmpresaCombo();
             }
         }
 
@@ -35,14 +35,12 @@ namespace ParkAutoHome.Pages
             btnNuevo.Enabled = false;
             btnEditar.Enabled = true;
         }
-
         protected void GVEstamots_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GVEstamots.EditIndex = -1;
             GVEstamots.PageIndex = e.NewPageIndex;
             fillgrilla();
         }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
             ddlEmpresa.Enabled = true;
@@ -56,52 +54,34 @@ namespace ParkAutoHome.Pages
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-            if (txtEstamto.Text == "")
+            if (btnGuardar.Text.Contains("Guardar"))
             {
-                Notificacion.VerMensaje("Captute el nombre del estacionamiento.", 2);
+                client = new WsPA.WSPanelControlSoapClient();
+                Estamtos oesta = new Estamtos();
+                oesta.CveEmpresa = ddlEmpresa.SelectedValue;
+                oesta.NombreEstamto = txtEstamto.Text.ToUpper();
+                string ResponseJson = JsonConvert.SerializeObject(oesta);
+                var c = client.NewEstamto(ResponseJson);
+                Notificacion.VerMensaje("Estacionamiento registrado.", 1);
+                CargarEmpresaCombo();
+                fillgrilla();
+                Inicio();
             }
-            else
+            if (btnGuardar.Text.Contains("Actualizar"))
             {
-                if (btnGuardar.Text.Contains("Guardar"))
-                {
-                    WsPA.Estamtos ent = new WsPA.Estamtos();
-                    ent.NombreEstamto = txtEstamto.Text;
-                    ent.NombreEmpresa = "";
-                    if (client.CatalogEstamtos(ent).Count() > 0)
-                    {
-                        Notificacion.VerMensaje("El estacionamiento ya se encutra registrado.", 2);
-                        return;
-                    }
-
-                    client = new WsPA.WSPanelControlSoapClient();
-                    Estamtos oesta = new Estamtos();
-                    oesta.CveEmpresa = ddlEmpresa.SelectedValue;
-                    oesta.NombreEstamto = txtEstamto.Text.ToUpper();
-                    string ResponseJson = JsonConvert.SerializeObject(oesta);
-                    var c = client.NewEstamto(ResponseJson);
-                    Notificacion.VerMensaje("Estacionamiento registrado.", 1);
-                    CargarEmpresaCombo();
-                    fillgrilla();
-                    Inicio();
-                }
-
-                if (btnGuardar.Text.Contains("Actualizar"))
-                {
-                    client = new WsPA.WSPanelControlSoapClient();
-                    Estamtos oesta = new Estamtos();
-                    oesta.CveEstamto = (string)(Session["CveEstamto"]);
-                    oesta.NombreEstamto = txtEstamto.Text.ToUpper();
-                    string ResponseJson = JsonConvert.SerializeObject(oesta);
-                    var c = client.UpdateEstamto(ResponseJson);
-                    Notificacion.VerMensaje("Estacionamiento actualizado.", 1);
-                    Session["CveEstamto"] = "";
-                    CargarEmpresaCombo();
-                    fillgrilla();
-                    Inicio();
-                }
+                client = new WsPA.WSPanelControlSoapClient();
+                Estamtos oesta = new Estamtos();
+                oesta.CveEstamto = (string)(Session["CveEstamto"]);
+                oesta.NombreEstamto = txtEstamto.Text.ToUpper();
+                string ResponseJson = JsonConvert.SerializeObject(oesta);
+                var c = client.UpdateEstamto(ResponseJson);
+                Notificacion.VerMensaje("Estacionamiento actualizado.", 1);
+                Session["CveEstamto"] = "";
+                CargarEmpresaCombo();
+                fillgrilla();
+                Inicio();
             }
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             ddlEmpresa.Enabled = false;
@@ -152,17 +132,47 @@ namespace ParkAutoHome.Pages
             this.ddlEmpresa.DataValueField = "idEmpresa";
             this.ddlEmpresa.DataBind();
         }
-
         protected void BtnBusqueda_Click(object sender, EventArgs e)
         {
             fillgrilla();
         }
-
         protected void BtnLimpiar_Click(object sender, EventArgs e)
         {
             TxtBEmpresa.Text = string.Empty;
             TxtBEstacionamiento.Text = string.Empty;
             fillgrilla();
+        }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+            if (txtEstamto.Text == "")
+            {
+                Notificacion.VerMensaje("Captute el nombre del estacionamiento.", 2);
+            }
+            else
+            {
+                if (btnGuardar.Text.Contains("Guardar"))
+                {
+                    WsPA.Estamtos ent = new WsPA.Estamtos();
+                    ent.NombreEstamto = txtEstamto.Text;
+                    ent.NombreEmpresa = "";
+                    if (client.CatalogEstamtos(ent).Count() > 0)
+                    {
+                        Notificacion.VerMensaje("El estacionamiento ya se encuentra registrado.", 2);
+                        return;
+                    }
+                    ModalMsj.Show();
+                }
+
+                if (btnGuardar.Text.Contains("Actualizar"))
+                {
+                    ModalMsj.Show();
+                }
+            }
+        }
+        protected void BtnCloseM_Click(object sender, EventArgs e)
+        {
+            ModalMsj.Hide();
         }
     }
 }

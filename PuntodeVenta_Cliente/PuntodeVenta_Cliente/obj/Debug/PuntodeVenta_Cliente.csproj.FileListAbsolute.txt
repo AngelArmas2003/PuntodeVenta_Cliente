@@ -17,3 +17,10 @@ C:\Proyectos_2022\Cobos_Corsa_Walmart\PuntodeVenta_Cliente\PuntodeVenta_Cliente\
 C:\Proyectos_2022\Cobos_Corsa_Walmart\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.pdb
 C:\Proyectos_2022\Cobos_Corsa_Walmart\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\bin\Debug\RestSharp.dll
 C:\Proyectos_2022\Cobos_Corsa_Walmart\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.csproj.AssemblyReference.cache
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.csproj.AssemblyReference.cache
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.Form1.resources
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.frmPV.resources
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.Properties.Resources.resources
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.csproj.GenerateResource.cache
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.exe
+C:\Tr\Personal\PuntodeVenta_Cliente\PuntodeVenta_Cliente\PuntodeVenta_Cliente\obj\Debug\PuntodeVenta_Cliente.pdb

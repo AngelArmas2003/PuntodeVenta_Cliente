@@ -16,34 +16,23 @@ namespace ParkAutoHome.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //MaintainScrollPositionOnPostBack = true;
             if (!IsPostBack)
             {
                 fillgrilla();
                 Inicio();
             }
-            else
-            {
-                if (Valida.Value == "1")
-                {
-                    btnEditar_Click(sender, e);
-                }
-            }
         }
-
-
         private void fillgrilla()
         {
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-
             WsPA.Users entUser = new WsPA.Users();
             entUser.Nombre = TxtBNombre.Text;
             entUser.Usuario = TxtBUsuario.Text;
-
-
+            List<string> clean = new List<string>();
+            GridView1.DataSource = clean.ToList();
+            GridView1.DataBind();
             GridView1.DataSource = client.CatalogoUsuario(entUser);
             GridView1.DataBind();
-            //GridViewRow row = GridView1.SelectedRow;
             txtid.Enabled = false;
             txtnombre.Enabled = false;
             txtusuario.Enabled = false;
@@ -74,7 +63,6 @@ namespace ParkAutoHome.Pages
             txtusuario.Enabled = false;
             txtcontraseña.Enabled = false;
             ckEstatus.Enabled = false;
-
             btnGuardar.Text = "Actualizar";
             btnGuardar.Enabled = false;
             btnNuevo.Enabled = false;
@@ -84,23 +72,15 @@ namespace ParkAutoHome.Pages
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             txtid.Enabled = false;
             txtnombre.Enabled = true;
             txtusuario.Enabled = true;
             txtcontraseña.Enabled = true;
             ckEstatus.Enabled = true;
-
-
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
-
             btnEditar.Enabled = false;
-
             txtConfirmar.Enabled = true;
-
-
-
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -120,10 +100,6 @@ namespace ParkAutoHome.Pages
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
             btnEditar.Enabled = false;
-
-
-
-
         }
 
 
@@ -135,12 +111,10 @@ namespace ParkAutoHome.Pages
             txtcontraseña.Enabled = false;
             ckEstatus.Enabled = false;
             this.txtConfirmar.Enabled = false;
-
             btnNuevo.Enabled = true;
             btnGuardar.Enabled = false;
             btnNuevo.Text = "Nuevo";
             btnEditar.Enabled = false;
-
             this.txtid.Text = "";
             this.txtnombre.Text = "";
             this.txtusuario.Text = "";
@@ -162,8 +136,7 @@ namespace ParkAutoHome.Pages
                 var c = client.UserNew(ResponseJson);
                 fillgrilla();
                 Inicio();
-                Notificacion.VerMensaje("Usuario registrado.", 1);
-                Valida.Value = "0";
+                Notificacion.VerMensaje("Usuario registrado.", 1);                
             }
             if (btnGuardar.Text.Contains("Actualizar"))
             {
@@ -178,9 +151,9 @@ namespace ParkAutoHome.Pages
                 string ResponseJson = JsonConvert.SerializeObject(osu);
                 var c = client.UpdaterNew(ResponseJson);
                 fillgrilla();
-                Notificacion.VerMensaje("Usuario actualizado.", 1);
-                Valida.Value = "0";
+                Notificacion.VerMensaje("Usuario actualizado.", 1);                
                 Inicio();
+                //Response.Redirect("Usuarios");
             }
         }
 
@@ -188,20 +161,14 @@ namespace ParkAutoHome.Pages
         public bool ValidaContraseña(string pas1, string pas2)
         {
             bool val = false;
-
-
             if (pas1 == pas2)
             {
                 val = true;
-
             }
             else
             {
                 val = false;
             }
-
-
-
             return val;
         }
 
@@ -210,7 +177,6 @@ namespace ParkAutoHome.Pages
         {
             byte[] Clave = Encoding.ASCII.GetBytes("Tu Clave");
             byte[] IV = Encoding.ASCII.GetBytes("Devjoker7.37hAES");
-
             byte[] inputBytes = Encoding.ASCII.GetBytes(Cadena);
             byte[] encripted;
             RijndaelManaged cripto = new RijndaelManaged();
@@ -266,9 +232,7 @@ namespace ParkAutoHome.Pages
                         }
                         else
                         {
-                            Valida.Value = "1";
-                            string varmensaje = string.Format("verMsgPregunta('{0}');", "¿Están correctos todos sus datos?");
-                            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", varmensaje, true);
+                            ModalMsj.Show();
                         }
                     }
                     else
@@ -298,17 +262,9 @@ namespace ParkAutoHome.Pages
                     var Passok = ValidaContraseña(txtConfirmar.Text, osu.Contraseña);
 
                     if (Passok)
-                    {
-                        if (totusaurio >= 1)
-                        {
-                            Notificacion.VerMensaje("El Usuario ya se encuentra registrado.", 2);
-                        }
-                        else
-                        {
-                            Valida.Value = "1";
-                            string varmensaje = string.Format("verMsgPregunta('{0}');", "¿Están correctos todos sus datos?");
-                            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", varmensaje, true);
-                        }
+                    {   
+                        ModalMsj.Show();
+                            
                     }
                     else
                     {
@@ -316,8 +272,11 @@ namespace ParkAutoHome.Pages
                     }
                 }
             }
+        }
 
-
+        protected void BtnCloseM_Click(object sender, EventArgs e)
+        {
+            ModalMsj.Hide();
         }
     }
 

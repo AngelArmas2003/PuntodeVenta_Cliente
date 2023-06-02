@@ -56,12 +56,7 @@ namespace ParkAutoHome.Pages
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             try
-            {
-                if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
-                {
-                    Notificacion.VerMensaje("Capture todos los campos.", 2);
-                    return;
-                }
+            {                
                 WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
                 WsPA.Tarifas tarifa = new WsPA.Tarifas();
                 tarifa.CveTarifa = txtCveTarifa.Text;
@@ -143,7 +138,6 @@ namespace ParkAutoHome.Pages
         protected void ddlEmpresas_TextChanged(object sender, EventArgs e)
         {
             TarifasConsulta();
-
             Inicio();
         }
 
@@ -214,6 +208,20 @@ namespace ParkAutoHome.Pages
             TxtMinI.Text = "0";
             TxtMinF.Text = TxtMinutos.Text;
             TxtTotalA.Text = txtImporte.Text;
+        }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
+            {
+                Notificacion.VerMensaje("Capture todos los campos.", 2);
+                return;
+            }
+            ModalMsj.Show();
+
+        }
+        protected void BtnCloseM_Click(object sender, EventArgs e)
+        {
+            ModalMsj.Hide();
         }
     }
 }
