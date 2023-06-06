@@ -211,7 +211,22 @@ namespace ParkAutoHome.Pages
                     {
                         if (entLDet[0].CveEmpresa != "" && entLDet[0].CveEstamto != "")
                         {
-                            Notificacion.VerMensaje("El estacionamiento " + entLDet[0].Estacionamiento + " ya se encutra registrado en la empresa " + entLDet[0].Nombre_Empresa + ".", 2);
+                            Notificacion.VerMensaje("El estacionamiento " + entLDet[0].Estacionamiento + " ya se encuentra registrado en la empresa " + entLDet[0].Nombre_Empresa + ".", 2);
+                            return;
+                        }
+                    }
+                    entDet = new WsPA.Determinantes();
+                    entDet.CveEmpresa = "";
+                    entDet.Nombre_Empresa = "";
+                    entDet.CveEstamto = "";
+                    entDet.Estacionamiento = "";
+                    entDet.Determinante = txtDeterminante.Text;
+                    entLDet = client.DeterminantesActivas(entDet);
+                    if (entLDet.Count() > 0)
+                    {
+                        if (entLDet[0].CveEmpresa != "" && entLDet[0].CveEstamto != "")
+                        {
+                            Notificacion.VerMensaje("La determinante " + entLDet[0].Determinante + " ya se encuentra registrado en el estacionamiento " + entLDet[0].Estacionamiento + " con la empresa " + entLDet[0].Nombre_Empresa + ".", 2);
                             return;
                         }
                     }

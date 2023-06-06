@@ -13,7 +13,7 @@ namespace ParkAutoHome.Pages
         {
             Session["IdUsuario"] = null;
             Session["Nombre"] = null;
-            Response.Redirect("~/Pages/Login");//move to the next link i.e default.aspx
+            Response.Redirect("~/Default");
         }
     }
 }

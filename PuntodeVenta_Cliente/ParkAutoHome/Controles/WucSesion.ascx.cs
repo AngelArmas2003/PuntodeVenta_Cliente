@@ -13,7 +13,7 @@ namespace ParkAutoHome.Controles
         {
             if(Session["IdUsuario"] == null)
             {
-                Response.Redirect("~/Pages/Login.aspx");
+                Response.Redirect("~/Default");
             }
 
         }
