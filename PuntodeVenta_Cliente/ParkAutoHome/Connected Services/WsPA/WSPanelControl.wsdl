@@ -457,6 +457,48 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="MinGraciaAct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MinGraciaActResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MinGraciaActResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogoMinGracia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entC" type="tns:MinGracia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MinGracia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Opc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinutoGracia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinGraciaP" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CatalogoMinGraciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogoMinGraciaResult" type="tns:ArrayOfMinGracia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMinGracia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MinGracia" nillable="true" type="tns:MinGracia" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -609,6 +651,18 @@
   <wsdl:message name="ValidaEmpresaSoapOut">
     <wsdl:part name="parameters" element="tns:ValidaEmpresaResponse" />
   </wsdl:message>
+  <wsdl:message name="MinGraciaActSoapIn">
+    <wsdl:part name="parameters" element="tns:MinGraciaAct" />
+  </wsdl:message>
+  <wsdl:message name="MinGraciaActSoapOut">
+    <wsdl:part name="parameters" element="tns:MinGraciaActResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoMinGraciaSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogoMinGracia" />
+  </wsdl:message>
+  <wsdl:message name="CatalogoMinGraciaSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogoMinGraciaResponse" />
+  </wsdl:message>
   <wsdl:portType name="WSPanelControlSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -709,6 +763,14 @@
     <wsdl:operation name="ValidaEmpresa">
       <wsdl:input message="tns:ValidaEmpresaSoapIn" />
       <wsdl:output message="tns:ValidaEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MinGraciaAct">
+      <wsdl:input message="tns:MinGraciaActSoapIn" />
+      <wsdl:output message="tns:MinGraciaActSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoMinGracia">
+      <wsdl:input message="tns:CatalogoMinGraciaSoapIn" />
+      <wsdl:output message="tns:CatalogoMinGraciaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSPanelControlSoap" type="tns:WSPanelControlSoap">
@@ -938,6 +1000,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="MinGraciaAct">
+      <soap:operation soapAction="http://tempuri.org/MinGraciaAct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoMinGracia">
+      <soap:operation soapAction="http://tempuri.org/CatalogoMinGracia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WSPanelControlSoap12" type="tns:WSPanelControlSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1159,6 +1239,24 @@
     </wsdl:operation>
     <wsdl:operation name="ValidaEmpresa">
       <soap12:operation soapAction="http://tempuri.org/ValidaEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MinGraciaAct">
+      <soap12:operation soapAction="http://tempuri.org/MinGraciaAct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogoMinGracia">
+      <soap12:operation soapAction="http://tempuri.org/CatalogoMinGracia" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

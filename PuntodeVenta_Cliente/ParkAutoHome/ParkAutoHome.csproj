@@ -209,6 +209,15 @@
     <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.TarifaDetExceReg_ActResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.CatalogoMinGraciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.MinGracia.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\WsPA\ParkAutoHome.WsPA.MinGraciaActResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\WsPA\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -242,6 +251,8 @@
     <Content Include="Pages\Empresas.aspx" />
     <Content Include="Pages\Estacionamientos.aspx" />
     <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\MinGracia.aspx" />
+    <Content Include="Pages\Salir.aspx" />
     <Content Include="Pages\TarifaExcedente.aspx" />
     <Content Include="Pages\Tarifas.aspx" />
     <Content Include="Pages\TiendasCombo.aspx" />
@@ -365,6 +376,20 @@
     </Compile>
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MinGracia.aspx.cs">
+      <DependentUpon>MinGracia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MinGracia.aspx.designer.cs">
+      <DependentUpon>MinGracia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Salir.aspx.cs">
+      <DependentUpon>Salir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Salir.aspx.designer.cs">
+      <DependentUpon>Salir.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TarifaExcedente.aspx.cs">
       <DependentUpon>TarifaExcedente.aspx</DependentUpon>

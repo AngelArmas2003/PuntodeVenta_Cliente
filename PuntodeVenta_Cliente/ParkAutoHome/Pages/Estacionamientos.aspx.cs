@@ -156,11 +156,16 @@ namespace ParkAutoHome.Pages
                     WsPA.Estamtos ent = new WsPA.Estamtos();
                     ent.NombreEstamto = txtEstamto.Text;
                     ent.NombreEmpresa = "";
-                    if (client.CatalogEstamtos(ent).Count() > 0)
+                    WsPA.Estamtos[] entL = client.CatalogEstamtos(ent);
+                    if(entL.Length > 0 )
                     {
-                        Notificacion.VerMensaje("El estacionamiento ya se encuentra registrado.", 2);
-                        return;
+                        if (entL[0].NombreEstamto == txtEstamto.Text)
+                        {
+                            Notificacion.VerMensaje("El estacionamiento ya se encuentra registrado.", 2);
+                            return;
+                        }
                     }
+                    
                     ModalMsj.Show();
                 }
 

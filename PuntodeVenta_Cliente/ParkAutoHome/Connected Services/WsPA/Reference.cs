@@ -989,6 +989,115 @@ namespace ParkAutoHome.WsPA {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MinGracia", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class MinGracia : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OpcField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MinutoGraciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MinGraciaPField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Opc {
+            get {
+                return this.OpcField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OpcField, value) != true)) {
+                    this.OpcField = value;
+                    this.RaisePropertyChanged("Opc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string MinutoGracia {
+            get {
+                return this.MinutoGraciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MinutoGraciaField, value) != true)) {
+                    this.MinutoGraciaField = value;
+                    this.RaisePropertyChanged("MinutoGracia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string MinGraciaP {
+            get {
+                return this.MinGraciaPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MinGraciaPField, value) != true)) {
+                    this.MinGraciaPField = value;
+                    this.RaisePropertyChanged("MinGraciaP");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WsPA.WSPanelControlSoap")]
     public interface WSPanelControlSoap {
@@ -1167,6 +1276,20 @@ namespace ParkAutoHome.WsPA {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidaEmpresa", ReplyAction="*")]
         System.Threading.Tasks.Task<ParkAutoHome.WsPA.ValidaEmpresaResponse> ValidaEmpresaAsync(ParkAutoHome.WsPA.ValidaEmpresaRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento obj del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MinGraciaAct", ReplyAction="*")]
+        ParkAutoHome.WsPA.MinGraciaActResponse MinGraciaAct(ParkAutoHome.WsPA.MinGraciaActRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MinGraciaAct", ReplyAction="*")]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.MinGraciaActResponse> MinGraciaActAsync(ParkAutoHome.WsPA.MinGraciaActRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento entC del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoMinGracia", ReplyAction="*")]
+        ParkAutoHome.WsPA.CatalogoMinGraciaResponse CatalogoMinGracia(ParkAutoHome.WsPA.CatalogoMinGraciaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogoMinGracia", ReplyAction="*")]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoMinGraciaResponse> CatalogoMinGraciaAsync(ParkAutoHome.WsPA.CatalogoMinGraciaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2859,6 +2982,142 @@ namespace ParkAutoHome.WsPA {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class MinGraciaActRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="MinGraciaAct", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.MinGraciaActRequestBody Body;
+        
+        public MinGraciaActRequest() {
+        }
+        
+        public MinGraciaActRequest(ParkAutoHome.WsPA.MinGraciaActRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class MinGraciaActRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string obj;
+        
+        public MinGraciaActRequestBody() {
+        }
+        
+        public MinGraciaActRequestBody(string obj) {
+            this.obj = obj;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class MinGraciaActResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="MinGraciaActResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.MinGraciaActResponseBody Body;
+        
+        public MinGraciaActResponse() {
+        }
+        
+        public MinGraciaActResponse(ParkAutoHome.WsPA.MinGraciaActResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class MinGraciaActResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int MinGraciaActResult;
+        
+        public MinGraciaActResponseBody() {
+        }
+        
+        public MinGraciaActResponseBody(int MinGraciaActResult) {
+            this.MinGraciaActResult = MinGraciaActResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogoMinGraciaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogoMinGracia", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.CatalogoMinGraciaRequestBody Body;
+        
+        public CatalogoMinGraciaRequest() {
+        }
+        
+        public CatalogoMinGraciaRequest(ParkAutoHome.WsPA.CatalogoMinGraciaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CatalogoMinGraciaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.MinGracia entC;
+        
+        public CatalogoMinGraciaRequestBody() {
+        }
+        
+        public CatalogoMinGraciaRequestBody(ParkAutoHome.WsPA.MinGracia entC) {
+            this.entC = entC;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogoMinGraciaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogoMinGraciaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ParkAutoHome.WsPA.CatalogoMinGraciaResponseBody Body;
+        
+        public CatalogoMinGraciaResponse() {
+        }
+        
+        public CatalogoMinGraciaResponse(ParkAutoHome.WsPA.CatalogoMinGraciaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CatalogoMinGraciaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ParkAutoHome.WsPA.MinGracia[] CatalogoMinGraciaResult;
+        
+        public CatalogoMinGraciaResponseBody() {
+        }
+        
+        public CatalogoMinGraciaResponseBody(ParkAutoHome.WsPA.MinGracia[] CatalogoMinGraciaResult) {
+            this.CatalogoMinGraciaResult = CatalogoMinGraciaResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WSPanelControlSoapChannel : ParkAutoHome.WsPA.WSPanelControlSoap, System.ServiceModel.IClientChannel {
     }
@@ -3507,6 +3766,56 @@ namespace ParkAutoHome.WsPA {
             inValue.Body = new ParkAutoHome.WsPA.ValidaEmpresaRequestBody();
             inValue.Body.rfc = rfc;
             return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).ValidaEmpresaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ParkAutoHome.WsPA.MinGraciaActResponse ParkAutoHome.WsPA.WSPanelControlSoap.MinGraciaAct(ParkAutoHome.WsPA.MinGraciaActRequest request) {
+            return base.Channel.MinGraciaAct(request);
+        }
+        
+        public int MinGraciaAct(string obj) {
+            ParkAutoHome.WsPA.MinGraciaActRequest inValue = new ParkAutoHome.WsPA.MinGraciaActRequest();
+            inValue.Body = new ParkAutoHome.WsPA.MinGraciaActRequestBody();
+            inValue.Body.obj = obj;
+            ParkAutoHome.WsPA.MinGraciaActResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).MinGraciaAct(inValue);
+            return retVal.Body.MinGraciaActResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.MinGraciaActResponse> ParkAutoHome.WsPA.WSPanelControlSoap.MinGraciaActAsync(ParkAutoHome.WsPA.MinGraciaActRequest request) {
+            return base.Channel.MinGraciaActAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.MinGraciaActResponse> MinGraciaActAsync(string obj) {
+            ParkAutoHome.WsPA.MinGraciaActRequest inValue = new ParkAutoHome.WsPA.MinGraciaActRequest();
+            inValue.Body = new ParkAutoHome.WsPA.MinGraciaActRequestBody();
+            inValue.Body.obj = obj;
+            return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).MinGraciaActAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ParkAutoHome.WsPA.CatalogoMinGraciaResponse ParkAutoHome.WsPA.WSPanelControlSoap.CatalogoMinGracia(ParkAutoHome.WsPA.CatalogoMinGraciaRequest request) {
+            return base.Channel.CatalogoMinGracia(request);
+        }
+        
+        public ParkAutoHome.WsPA.MinGracia[] CatalogoMinGracia(ParkAutoHome.WsPA.MinGracia entC) {
+            ParkAutoHome.WsPA.CatalogoMinGraciaRequest inValue = new ParkAutoHome.WsPA.CatalogoMinGraciaRequest();
+            inValue.Body = new ParkAutoHome.WsPA.CatalogoMinGraciaRequestBody();
+            inValue.Body.entC = entC;
+            ParkAutoHome.WsPA.CatalogoMinGraciaResponse retVal = ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoMinGracia(inValue);
+            return retVal.Body.CatalogoMinGraciaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoMinGraciaResponse> ParkAutoHome.WsPA.WSPanelControlSoap.CatalogoMinGraciaAsync(ParkAutoHome.WsPA.CatalogoMinGraciaRequest request) {
+            return base.Channel.CatalogoMinGraciaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ParkAutoHome.WsPA.CatalogoMinGraciaResponse> CatalogoMinGraciaAsync(ParkAutoHome.WsPA.MinGracia entC) {
+            ParkAutoHome.WsPA.CatalogoMinGraciaRequest inValue = new ParkAutoHome.WsPA.CatalogoMinGraciaRequest();
+            inValue.Body = new ParkAutoHome.WsPA.CatalogoMinGraciaRequestBody();
+            inValue.Body.entC = entC;
+            return ((ParkAutoHome.WsPA.WSPanelControlSoap)(this)).CatalogoMinGraciaAsync(inValue);
         }
     }
 }
