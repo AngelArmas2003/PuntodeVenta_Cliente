@@ -39,7 +39,7 @@ namespace ParkAutoHome.Pages
             btnGuardar.Text = "Guardar";
             btnNuevo.Enabled = false;
             BtnAgregar.Enabled = false;
-            btnGuardar.Enabled = true;
+            btnGuardar.Enabled = false;
             btnEditar.Enabled = false;
             TarifasConsulta();
 
@@ -155,7 +155,7 @@ namespace ParkAutoHome.Pages
             TxtMinutos.Enabled = true;
             txtImporte.Enabled = true;
             btnNuevo.Enabled = false;
-            btnGuardar.Enabled = true;
+            btnGuardar.Enabled = false;
             btnEditar.Enabled = false;
         }
 
@@ -294,6 +294,10 @@ namespace ParkAutoHome.Pages
                 TxtMinF.Text = TxtMinutos.Text;
                 TxtTotalA.Text = txtImporte.Text;
             }
+            btnGuardar.Enabled = true;
+            TxtMinutos.Enabled = false;
+            txtImporte.Enabled = false;
+            txtCveTarifa.Enabled = false;
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {

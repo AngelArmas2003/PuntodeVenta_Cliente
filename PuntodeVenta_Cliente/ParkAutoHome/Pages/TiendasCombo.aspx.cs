@@ -36,6 +36,7 @@ namespace ParkAutoHome.Pages
             DeterminantesConsulta();
             ddlDeterminante.Enabled = true;
             ddlDeterminante.SelectedValue = GvTiendasCombo.SelectedRow.Cells[2].Text;
+            ViewState["DeterAnt"] = GvTiendasCombo.SelectedRow.Cells[2].Text;
             ddlDeterminante.Enabled = false;
             var estatus = (GvTiendasCombo.SelectedRow.Cells[4]).Text;
             ChkEstatus.Checked = Convert.ToBoolean(estatus);
@@ -192,7 +193,29 @@ namespace ParkAutoHome.Pages
                 }
             }
             else
+            {
+                if (btnGuardar.Text.Contains("Actualizar"))
+                {
+                    if(ViewState["DeterAnt"].ToString() != DdlCombo.SelectedValue.ToString())
+                    {
+                        if (lstC.Where(x => x.NumeroCombo == DdlCombo.SelectedValue).Count() > 0)
+                        {
+                            Notificacion.VerMensaje("El estacionamiento " + lstC[0].NombrePlaza + " ya se encuentra registrado. ", 2);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    if (lstC.Where(x => x.NumeroCombo == DdlCombo.SelectedValue).Count() > 0)
+                    {
+                        Notificacion.VerMensaje("El estacionamiento " + lstC[0].NombrePlaza + " ya se encuentra registrado. ", 2);
+                        return;
+                    }
+                }                
                 ModalMsj.Show();
+            }
+               
         }
         protected void BtnCloseM_Click(object sender, EventArgs e)
         {

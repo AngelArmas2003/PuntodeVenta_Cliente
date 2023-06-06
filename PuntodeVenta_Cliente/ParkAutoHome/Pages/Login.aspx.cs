@@ -121,7 +121,7 @@ namespace ParkAutoHome.Pages
                     Response.Redirect("Configuracion.aspx");
                 }                    
                 else
-                    Notificacion.VerMensaje("Usuario y/o incorrecto.", 2);
+                    Notificacion.VerMensaje("Usuario o contraseña incorrecto.", 2);
             }
             catch (Exception ex)
             {

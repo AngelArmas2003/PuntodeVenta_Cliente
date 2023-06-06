@@ -61,8 +61,8 @@
                         <div class="col-md-5" style="display: flex; justify-content: right; padding: 10px;">
                             <asp:Label ID="Label2" runat="server" Text="Descripción"></asp:Label>
                         </div>
-                        <div class="col-md-3" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:TextBox ID="TxtDescripcion" runat="server" Width="467px" class="form-control CajaTexto"></asp:TextBox>
+                        <div class="col-md-7" style="display: flex; justify-content: left; padding: 10px;">
+                            <asp:TextBox ID="TxtDescripcion" runat="server" Width="867px" class="form-control CajaTexto"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">

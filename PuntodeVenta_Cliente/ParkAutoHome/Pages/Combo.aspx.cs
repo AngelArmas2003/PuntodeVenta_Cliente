@@ -38,6 +38,7 @@ namespace ParkAutoHome.Pages
             Session["IdCombo"] = GVCombo.SelectedRow.Cells[0].Text;
             this.txtNumCombo.Text = GVCombo.SelectedRow.Cells[1].Text;
             this.txtDescripcion.Text = GVCombo.SelectedRow.Cells[2].Text;
+            ViewState["NumComboAnt"] = GVCombo.SelectedRow.Cells[1].Text;
             var dd = (GVCombo.SelectedRow.Cells[3]).Text;
             this.ckEstatus.Checked = Convert.ToBoolean(dd);
             btnNuevo.Enabled = false;
@@ -157,6 +158,40 @@ namespace ParkAutoHome.Pages
             {
                 Notificacion.VerMensaje("Capture todos los campos.", 2);
                 return;
+            }
+            WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+            WsPA.Combos ent = new WsPA.Combos();
+            ent.Combo = txtNumCombo.Text;
+            ent.DescripcionCombo = "";
+            WsPA.Combos[] entL = client.CatalogoCombos(ent);
+            if(entL.Length > 0)
+            {
+                if(btnGuardar.Text.Contains("Actualizar"))
+                {
+                    if(ViewState["NumComboAnt"].ToString() != txtNumCombo.Text)
+                    {
+                        Notificacion.VerMensaje("El número de combo " + entL[0].Combo + " ya se encuentra registrado. ", 2);
+                        return;
+                    }
+                }
+                else
+                {
+                    Notificacion.VerMensaje("El número de combo " + entL[0].Combo + " ya se encuentra registrado. ", 2);
+                    return;
+                }                
+            }
+            client = new WsPA.WSPanelControlSoapClient();
+            ent = new WsPA.Combos();
+            ent.Combo = "";
+            ent.DescripcionCombo = txtDescripcion.Text;
+            entL = client.CatalogoCombos(ent);
+            if (entL.Length > 0)
+            {
+                if (entL[0].DescripcionCombo == txtDescripcion.Text)
+                {
+                    Notificacion.VerMensaje("El combo " + entL[0].DescripcionCombo + " ya se encuentra registrado. ", 2);
+                    return;
+                }
             }
             ModalMsj.Show();
         }

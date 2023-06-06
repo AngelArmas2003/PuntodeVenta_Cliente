@@ -39,6 +39,7 @@ namespace ParkAutoHome.Pages
             this.ddlEstamto.Text = GvDeterminantes.SelectedRow.Cells[4].Text;
             this.txtDeterminante.Text = GvDeterminantes.SelectedRow.Cells[6].Text;
             var dd = (GvDeterminantes.SelectedRow.Cells[7]).Text;
+            ViewState["DeterminanteAnt"] = GvDeterminantes.SelectedRow.Cells[6].Text;
             this.ckEstatus.Checked = Convert.ToBoolean(dd);
             btnNuevo.Enabled = false;
             btnGuardar.Enabled = true;
@@ -72,7 +73,7 @@ namespace ParkAutoHome.Pages
 
             if (btnGuardar.Text.Contains("Guardar"))
             {
-                WsPA.Determinantes entDet = new WsPA.Determinantes();                
+                WsPA.Determinantes entDet = new WsPA.Determinantes();
                 client = new WsPA.WSPanelControlSoapClient();
                 Proveedor oPro = new Proveedor();
                 oPro.Codigo_Proveedor = txtProveedor.Text;
@@ -198,10 +199,10 @@ namespace ParkAutoHome.Pages
             else
             {
                 WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
-
+                WsPA.Determinantes entDet = new WsPA.Determinantes();
                 if (btnGuardar.Text.Contains("Guardar"))
                 {
-                    WsPA.Determinantes entDet = new WsPA.Determinantes();
+                    entDet = new WsPA.Determinantes();
                     entDet.CveEmpresa = "";
                     entDet.Nombre_Empresa = "";
                     entDet.CveEstamto = ddlEstamto.SelectedValue;
@@ -234,6 +235,39 @@ namespace ParkAutoHome.Pages
                 }
                 else if (btnGuardar.Text.Contains("Actualizar"))
                 {
+                    WsPA.Determinantes[] entLDet;
+                    if (txtDeterminante.Text != ViewState["DeterminanteAnt"].ToString())
+                    {
+                        entDet = new WsPA.Determinantes();
+                        entDet.CveEmpresa = "";
+                        entDet.Nombre_Empresa = "";
+                        entDet.CveEstamto = "";
+                        entDet.Estacionamiento = "";
+                        entDet.Determinante = txtDeterminante.Text;
+                        entLDet = client.DeterminantesActivas(entDet);
+                        if (entLDet.Count() > 0)
+                        {
+                            if (entLDet[0].CveEmpresa != "" && entLDet[0].CveEstamto != "")
+                            {
+                                Notificacion.VerMensaje("La determinante " + entLDet[0].Determinante + " ya se encuentra registrado en el estacionamiento " + entLDet[0].Estacionamiento + " con la empresa " + entLDet[0].Nombre_Empresa + ".", 2);
+                                return;
+                            }
+                        }
+                    }
+                    entDet = new WsPA.Determinantes();
+                    entDet.CveEmpresa = "";
+                    entDet.Nombre_Empresa = "";
+                    entDet.CveEstamto = ddlEstamto.SelectedValue;
+                    entDet.Estacionamiento = "";
+                    entLDet = client.DeterminantesActivas(entDet);
+                    if (entLDet.Count() > 0)
+                    {
+                        if (entLDet[0].CveEmpresa != "" && entLDet[0].CveEstamto != "")
+                        {
+                            Notificacion.VerMensaje("El estacionamiento " + entLDet[0].Estacionamiento + " ya se encuentra registrado en la empresa " + entLDet[0].Nombre_Empresa + ".", 2);
+                            return;
+                        }
+                    }
                     ModalMsj.Show();
                 }
             }

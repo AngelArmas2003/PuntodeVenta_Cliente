@@ -86,7 +86,8 @@
                             <asp:Label ID="Label1" runat="server" Text="CveTarifa"></asp:Label>
                         </div>
                         <div class="col-md-1" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:TextBox ID="txtCveTarifa" runat="server" Width="67px" MaxLength="2" class="form-control CajaTexto"></asp:TextBox>
+                            <asp:TextBox ID="txtCveTarifa" runat="server" Width="67px" MaxLength="2" class="form-control CajaTexto"
+                                onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)"></asp:TextBox>
                         </div>
                         <div class="col-md-2" style="display: flex; justify-content: right; padding: 10px; margin: 4px;">
                             <asp:Label ID="Label3" runat="server" Text="Minutos"></asp:Label>

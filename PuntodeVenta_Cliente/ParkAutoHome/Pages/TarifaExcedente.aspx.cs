@@ -37,7 +37,7 @@ namespace ParkAutoHome.Pages
             TxtDeterminante.Text = ddlEmpresas.SelectedValue.ToString();
             btnGuardar.Text = "Guardar";
             btnNuevo.Enabled = false;
-            btnGuardar.Enabled = true;
+            btnGuardar.Enabled = false;
             btnEditar.Enabled = false;
             TarifasConsulta();
             #region Obtenter clave
@@ -116,7 +116,7 @@ namespace ParkAutoHome.Pages
             TxtMinutos.Enabled = true;
             txtImporte.Enabled = true;
             btnNuevo.Enabled = false;
-            btnGuardar.Enabled = true;
+            btnGuardar.Enabled = false;
             btnEditar.Enabled = false;
         }
 
@@ -208,6 +208,10 @@ namespace ParkAutoHome.Pages
             TxtMinI.Text = "0";
             TxtMinF.Text = TxtMinutos.Text;
             TxtTotalA.Text = txtImporte.Text;
+            btnGuardar.Enabled = true;
+            TxtMinutos.Enabled = false;
+            txtImporte.Enabled = false;
+            txtCveTarifa.Enabled = false;
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
