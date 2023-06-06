@@ -147,7 +147,7 @@ namespace ParkAutoHome.Pages
             WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
             if (txtEstamto.Text == "")
             {
-                Notificacion.VerMensaje("Captute el nombre del estacionamiento.", 2);
+                Notificacion.VerMensaje("Capture el nombre del estacionamiento.", 2);
             }
             else
             {
