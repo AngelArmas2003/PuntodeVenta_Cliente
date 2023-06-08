@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
-                                        <asp:Button ID="BtnContinuar" Text="Continuar" runat="server" OnClick="btnEditar_Click" OnClientClick="SetClientRefresh()" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                        <asp:Button ID="BtnContinuar" Text="Continuar" runat="server" OnClick="btnEditar_Click" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
                                     </div>
                                 </div>
                         </asp:Panel>

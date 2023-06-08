@@ -97,14 +97,14 @@ namespace ParkAutoHome.Pages
                     }
                 }
                 else if (btnGuardar.Text.Contains("Actualizar"))
-                {                    
+                {
                     LstTarifaP = new List<WsPA.Tarifas>();
                     List<WsPA.Tarifas> LstTarifaPAnt = new List<WsPA.Tarifas>();
                     LstTarifaP = (List<WsPA.Tarifas>)Session["LstTarifa"];
                     int i = 0;
                     foreach (var item in LstTarifaP.Where(x => x.TotalAcumulado >= Convert.ToDouble(HdTotA.Value)))
                     {
-                        tarifa = new WsPA.Tarifas();                        
+                        tarifa = new WsPA.Tarifas();
                         tarifa.Opcion = 2;
                         //para el primer registro
                         if (i == 0)
@@ -131,7 +131,7 @@ namespace ParkAutoHome.Pages
                             tarifa.TotalAcumulado = Convert.ToDouble(LstTarifaPAnt.FirstOrDefault().TotalAcumulado + item.ImporteMinutos);
                             tarifa.Determinante = TxtDeterminante.Text;
                             string ResponseJson = JsonConvert.SerializeObject(tarifa);
-                            var a = client.TarifaDetExceReg_Act(ResponseJson);                            
+                            var a = client.TarifaDetExceReg_Act(ResponseJson);
                         }
                         LstTarifaPAnt = new List<WsPA.Tarifas>();
                         LstTarifaPAnt.Add(tarifa);
@@ -256,51 +256,74 @@ namespace ParkAutoHome.Pages
             txtImporte.Text = GvTarifas.SelectedRow.Cells[3].Text;
             TxtDeterminante.Text = GvTarifas.SelectedRow.Cells[7].Text;
             Session["Index"] = GvTarifas.SelectedIndex;
-            HdTotA.Value = GvTarifas.SelectedRow.Cells[6].Text;               
+            HdTotA.Value = GvTarifas.SelectedRow.Cells[6].Text;
         }
 
         protected void BtnAsigna_Click(object sender, EventArgs e)
         {
-            if (GvTarifas.Rows.Count > 0)
+            Button btn = (Button)sender;
+            switch (btn.ID)
             {
-                //if(GvTarifas.Rows[GvTarifas.Rows.Count - 1].Cells[1].Text.ToString() == txtCveTarifa.Text)
-                //{
-                int minFAnt = 0;
-                double totAcuAnt = 0;
-                int indice = 0;
-                if (Convert.ToInt32(Session["Index"]) == 0)
-                    indice = Convert.ToInt32(Session["Index"]);
-                else
-                    indice = Convert.ToInt32(Session["Index"]) - 1;
-                
-                if(Convert.ToInt32(Session["Index"]) == 0)
-                {
-                    TxtMinI.Text = "0";
-                    TxtMinF.Text = TxtMinutos.Text;
-                    TxtTotalA.Text = txtImporte.Text;
-                }
-                else
-                {
-                    minFAnt = Convert.ToInt32(GvTarifas.Rows[indice].Cells[5].Text.ToString());
-                    totAcuAnt = Convert.ToDouble(GvTarifas.Rows[indice].Cells[6].Text.ToString());
-                    TxtMinI.Text = (minFAnt + 1).ToString();
-                    TxtMinF.Text = (minFAnt + Convert.ToInt32(TxtMinutos.Text)).ToString();
-                    TxtTotalA.Text = (totAcuAnt + Convert.ToInt32(txtImporte.Text)).ToString();
-                }               
+                case "BtnAsigna":
+                    if (GvTarifas.Rows.Count > 0)
+                    {
+                        //if(GvTarifas.Rows[GvTarifas.Rows.Count - 1].Cells[1].Text.ToString() == txtCveTarifa.Text)
+                        //{
+                        int minFAnt = 0;
+                        double totAcuAnt = 0;
+                        int indice = 0;
+                        if (Convert.ToInt32(Session["Index"]) == 0)
+                            indice = Convert.ToInt32(Session["Index"]);
+                        else
+                            indice = Convert.ToInt32(Session["Index"]) - 1;
+
+                        if (Convert.ToInt32(Session["Index"]) == 0)
+                        {
+                            TxtMinI.Text = "0";
+                            TxtMinF.Text = TxtMinutos.Text;
+                            TxtTotalA.Text = txtImporte.Text;
+                        }
+                        else
+                        {
+                            minFAnt = Convert.ToInt32(GvTarifas.Rows[indice].Cells[5].Text.ToString());
+                            totAcuAnt = Convert.ToDouble(GvTarifas.Rows[indice].Cells[6].Text.ToString());
+                            TxtMinI.Text = (minFAnt + 1).ToString();
+                            TxtMinF.Text = (minFAnt + Convert.ToInt32(TxtMinutos.Text)).ToString();
+                            TxtTotalA.Text = (totAcuAnt + Convert.ToInt32(txtImporte.Text)).ToString();
+                        }
+                    }
+                    else
+                    {
+                        TxtMinI.Text = "0";
+                        TxtMinF.Text = TxtMinutos.Text;
+                        TxtTotalA.Text = txtImporte.Text;
+                    }
+                    btnGuardar.Enabled = true;
+                    TxtMinutos.Enabled = false;
+                    txtImporte.Enabled = false;
+                    txtCveTarifa.Enabled = false;
+                    break;
+                case "Button2":
+                    txtImporte.Focus();
+                    break;
+                case "Button3":
+                    TxtMinutos.Focus();
+                    break;
             }
-            else
-            {
-                TxtMinI.Text = "0";
-                TxtMinF.Text = TxtMinutos.Text;
-                TxtTotalA.Text = txtImporte.Text;
-            }
-            btnGuardar.Enabled = true;
-            TxtMinutos.Enabled = false;
-            txtImporte.Enabled = false;
-            txtCveTarifa.Enabled = false;
+
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (Convert.ToInt32(txtCveTarifa.Text) <= 0)
+            {
+                Notificacion.VerMensaje("La clave tarifa debe de ser mayor a 0.", 2);
+                return;
+            }
+            if (Convert.ToInt32(TxtMinutos.Text) <= 0)
+            {
+                Notificacion.VerMensaje("Los minutos deben ser mayor a 0.", 2);
+                return;
+            }
             if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
             {
                 Notificacion.VerMensaje("Capture todos los campos.", 2);

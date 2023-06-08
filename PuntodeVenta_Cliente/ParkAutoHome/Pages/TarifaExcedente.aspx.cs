@@ -205,16 +205,39 @@ namespace ParkAutoHome.Pages
 
         protected void BtnAsigna_Click(object sender, EventArgs e)
         {
-            TxtMinI.Text = "0";
-            TxtMinF.Text = TxtMinutos.Text;
-            TxtTotalA.Text = txtImporte.Text;
-            btnGuardar.Enabled = true;
-            TxtMinutos.Enabled = false;
-            txtImporte.Enabled = false;
-            txtCveTarifa.Enabled = false;
+            Button btn = (Button)sender;
+            switch (btn.ID)
+            {
+                case "BtnAsigna":
+                    TxtMinI.Text = "0";
+                    TxtMinF.Text = TxtMinutos.Text;
+                    TxtTotalA.Text = txtImporte.Text;
+                    btnGuardar.Enabled = true;
+                    TxtMinutos.Enabled = false;
+                    txtImporte.Enabled = false;
+                    txtCveTarifa.Enabled = false;
+                    break;
+                case "Button2":
+                    txtImporte.Focus();
+                    break;
+                case "Button3":
+                    TxtMinutos.Focus();
+                    break;
+            }
+            
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (Convert.ToInt32(txtCveTarifa.Text) <= 0)
+            {
+                Notificacion.VerMensaje("La clave tarifa debe de ser mayor a 0.", 2);
+                return;
+            }
+            if (Convert.ToInt32(TxtMinutos.Text) <= 0)
+            {
+                Notificacion.VerMensaje("Los minutos deben ser mayor a 0.", 2);
+                return;
+            }
             if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
             {
                 Notificacion.VerMensaje("Capture todos los campos.", 2);

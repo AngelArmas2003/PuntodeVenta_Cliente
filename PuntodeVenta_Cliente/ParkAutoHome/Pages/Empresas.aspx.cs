@@ -163,9 +163,7 @@ namespace ParkAutoHome.Pages
                             Notificacion.VerMensaje("El RFC ya esta registrado.", 2);
                         }
                         else
-                        {
                             ModalMsj.Show();
-                        }
                     }
                 }
 
@@ -179,7 +177,14 @@ namespace ParkAutoHome.Pages
                     }
                     else
                     {
-                        ModalMsj.Show();
+                        WsPA.WSPanelControlSoapClient client = new WsPA.WSPanelControlSoapClient();
+                        var ValRfc = client.ValidaEmpresa(txtrfc.Text);
+                        if (ValRfc >= 1)
+                        {
+                            Notificacion.VerMensaje("El RFC ya esta registrado.", 2);
+                        }
+                        else
+                            ModalMsj.Show();
                     }
                 }
             }

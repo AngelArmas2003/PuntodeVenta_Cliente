@@ -73,7 +73,7 @@
                 <br />
                 <br />
                 <div align="center">
-                    <div class="row">
+                    <div class="row" style="padding: 15px;">
                         <div class="col-md-7" style="display: flex; justify-content: right; padding: 10px; margin: 4px -37px;">
                             <asp:Label ID="Label7" runat="server" Text="Determinante"></asp:Label>
                         </div>
@@ -82,35 +82,38 @@
                         </div>
                     </div>
                     <div class="row" style="display: flex; justify-content: center;">
-                        <div class="col-md-2" style="display: flex; justify-content: right; padding: 10px; margin: 4px;">
+                        <div class="col-md-2" style="display: flex; justify-content: right; padding: 0px; margin: 4px;">
                             <asp:Label ID="Label1" runat="server" Text="CveTarifa"></asp:Label>
                         </div>
-                        <div class="col-md-1" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:TextBox ID="txtCveTarifa" runat="server" Width="67px" MaxLength="2" class="form-control CajaTexto"
-                                onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)"></asp:TextBox>
+                        <div class="col-md-1" style="justify-content: left; padding: 0px;">
+                            <asp:Panel runat="server" DefaultButton="Button3">
+                                <asp:TextBox ID="txtCveTarifa" runat="server" Width="67px" MaxLength="2" class="form-control CajaTexto"
+                                    onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)"></asp:TextBox>
+                                <asp:Button ID="Button3" runat="server" OnClick="BtnAsigna_Click" Style="display: none" />
+                            </asp:Panel>
                         </div>
-                        <div class="col-md-2" style="display: flex; justify-content: right; padding: 10px; margin: 4px;">
+                        <div class="col-md-2" style="display: flex; justify-content: right; padding: 0px; margin: 4px;">
                             <asp:Label ID="Label3" runat="server" Text="Minutos"></asp:Label>
                         </div>
-                        <div class="col-md-1" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:TextBox ID="TxtMinutos" runat="server" Width="67px" MaxLength="3" class="form-control CajaTexto"
-                                onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)"></asp:TextBox>
+                        <div class="col-md-1" style="justify-content: left; padding: 0px;">
+                            <asp:Panel runat="server" DefaultButton="Button2">
+                                <asp:TextBox ID="TxtMinutos" runat="server" Width="67px" MaxLength="3" class="form-control CajaTexto"
+                                    onkeydown="return (!(event.keyCode>=65) && event.keyCode!=32)"></asp:TextBox>
+                                <asp:Button ID="Button2" runat="server" OnClick="BtnAsigna_Click" Style="display: none" />
+                            </asp:Panel>
                         </div>
-                        <div class="col-md-2" style="display: flex; justify-content: right; padding: 10px; margin: 4px;">
+                        <div class="col-md-2" style="display: flex; justify-content: right; padding: 0px; margin: 4px;">
                             <asp:Label ID="Label4" runat="server" Text="Importe por Tiempo"></asp:Label>
                         </div>
-                        <div class="col-md-1" style="display: flex; justify-content: left; padding: 10px;">
-                            <asp:TextBox ID="txtImporte" runat="server" Width="67px" class="form-control CajaTexto"
+                        <div class="col-md-1" style="display: flex; justify-content: left; padding: 0px;">
+                            <asp:Panel runat="server" DefaultButton="BtnAsigna">
+                                <asp:TextBox ID="txtImporte" runat="server" Width="67px" class="form-control CajaTexto"
                                 MaxLength="5"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegexDecimal" runat="server" ErrorMessage="Ingrese números" ForeColor="Red"
                                 ValidationExpression="((\d+)((\.\d{1,2})?))$" ControlToValidate="txtImporte" />
-                        </div>
-                    </div>
-                    <div class="row" style="display: flex; justify-content: center;">
-                        <div class="col-md-2">
-                            <asp:Panel runat="server" DefaultButton="BtnAsigna">
-                                <asp:Button ID="BtnAsigna" runat="server" OnClick="BtnAsigna_Click" Visible="true" Width="0px" Height="0px" BorderColor="Transparent" />
+                                <asp:Button ID="BtnAsigna" runat="server" OnClick="BtnAsigna_Click" Style="display: none"/>
                             </asp:Panel>
+                            
                         </div>
                     </div>
                     <div class="row" style="display: flex; justify-content: center;">
@@ -167,7 +170,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-5" style="display: flex; justify-content: center; padding: 10px;">
-                                        <asp:Button ID="BtnContinuar" Text="Continuar" runat="server" OnClick="btnEditar_Click" OnClientClick="SetClientRefresh()" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
+                                        <asp:Button ID="BtnContinuar" Text="Continuar" runat="server" OnClick="btnEditar_Click" Height="43px" Width="114px" class="btn btn-primary btn-lg" />
                                     </div>
                                 </div>
                         </asp:Panel>
