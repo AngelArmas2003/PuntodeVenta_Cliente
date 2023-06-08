@@ -228,6 +228,11 @@ namespace ParkAutoHome.Pages
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
+            {
+                Notificacion.VerMensaje("Capture todos los campos.", 2);
+                return;
+            }
             if (Convert.ToInt32(txtCveTarifa.Text) <= 0)
             {
                 Notificacion.VerMensaje("La clave tarifa debe de ser mayor a 0.", 2);
@@ -237,14 +242,8 @@ namespace ParkAutoHome.Pages
             {
                 Notificacion.VerMensaje("Los minutos deben ser mayor a 0.", 2);
                 return;
-            }
-            if (txtCveTarifa.Text == "" || TxtMinutos.Text == "" || txtImporte.Text == "" || TxtMinI.Text == "" || TxtMinF.Text == "" || TxtTotalA.Text == "")
-            {
-                Notificacion.VerMensaje("Capture todos los campos.", 2);
-                return;
-            }
+            }            
             ModalMsj.Show();
-
         }
         protected void BtnCloseM_Click(object sender, EventArgs e)
         {
