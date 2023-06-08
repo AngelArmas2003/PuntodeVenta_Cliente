@@ -118,7 +118,7 @@ namespace ParkAutoHome.Pages
                     WsPA.Users[] LstUser =  client.CatalogoUsuario(entUser);
                     Session["IdUsuario"] = LstUser[0].id.ToString();
                     Session["Nombre"] = LstUser[0].Nombre.ToString();
-                    Response.Redirect("Configuracion.aspx");
+                    Response.Redirect("Configuracion");
                 }                    
                 else
                     Notificacion.VerMensaje("Usuario o contraseña incorrecto.", 2);
