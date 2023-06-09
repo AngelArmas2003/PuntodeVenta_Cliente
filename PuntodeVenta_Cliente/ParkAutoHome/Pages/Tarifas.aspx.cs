@@ -59,6 +59,7 @@ namespace ParkAutoHome.Pages
                     break;
                 case "BtnAgregar":
                     txtCveTarifa.Text = Convert.ToInt32(GvTarifas.Rows[GvTarifas.Rows.Count - 1].Cells[1].Text.ToString()).ToString("D2");
+                    Session["Index"] = GvTarifas.Rows.Count;
                     break;
             }
 
