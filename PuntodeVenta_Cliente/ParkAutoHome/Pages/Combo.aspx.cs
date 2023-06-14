@@ -39,6 +39,7 @@ namespace ParkAutoHome.Pages
             this.txtNumCombo.Text = GVCombo.SelectedRow.Cells[1].Text;
             this.txtDescripcion.Text = GVCombo.SelectedRow.Cells[2].Text;
             ViewState["NumComboAnt"] = GVCombo.SelectedRow.Cells[1].Text;
+            ViewState["DescripcionCombo"] = GVCombo.SelectedRow.Cells[2].Text;
             var dd = (GVCombo.SelectedRow.Cells[3]).Text;
             this.ckEstatus.Checked = Convert.ToBoolean(dd);
             btnNuevo.Enabled = false;
@@ -187,7 +188,7 @@ namespace ParkAutoHome.Pages
             entL = client.CatalogoCombos(ent);
             if (entL.Length > 0)
             {
-                if (entL[0].DescripcionCombo == txtDescripcion.Text)
+                if (entL[0].DescripcionCombo != ViewState["DescripcionCombo"].ToString())
                 {
                     Notificacion.VerMensaje("El combo " + entL[0].DescripcionCombo + " ya se encuentra registrado. ", 2);
                     return;
