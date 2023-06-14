@@ -179,7 +179,7 @@ namespace ParkAutoHome.Pages
                 {
                     Notificacion.VerMensaje("El número de combo " + entL[0].Combo + " ya se encuentra registrado. ", 2);
                     return;
-                }                
+                }              
             }
             client = new WsPA.WSPanelControlSoapClient();
             ent = new WsPA.Combos();
@@ -188,11 +188,24 @@ namespace ParkAutoHome.Pages
             entL = client.CatalogoCombos(ent);
             if (entL.Length > 0)
             {
-                if (entL[0].DescripcionCombo != ViewState["DescripcionCombo"].ToString())
+                if (btnGuardar.Text.Contains("Actualizar"))
                 {
-                    Notificacion.VerMensaje("El combo " + entL[0].DescripcionCombo + " ya se encuentra registrado. ", 2);
-                    return;
+                    if (entL[0].DescripcionCombo != ViewState["DescripcionCombo"].ToString())
+                    {
+                        Notificacion.VerMensaje("El combo " + entL[0].DescripcionCombo + " ya se encuentra registrado. ", 2);
+                        return;
+                    }
                 }
+                if (btnGuardar.Text.Contains("Guardar"))
+                {
+                    if (entL[0].DescripcionCombo == txtDescripcion.Text)
+                    {
+                        Notificacion.VerMensaje("El combo " + entL[0].DescripcionCombo + " ya se encuentra registrado. ", 2);
+                        return;
+                    }
+                }
+
+
             }
             ModalMsj.Show();
         }
